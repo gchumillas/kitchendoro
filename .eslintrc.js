@@ -9,7 +9,7 @@ module.exports = {
         }
     },
     "extends": [
-        "eslint:recommended",
+        "standard",
         "plugin:react/recommended"
     ],
     "parserOptions": {
@@ -26,7 +26,6 @@ module.exports = {
         "eqeqeq": "off",
         "arrow-parens": ["error", "as-needed"],
         "camelcase": "off",
-        "semi": ["error", "never"],
         "react/prop-types": "off",
         "react/jsx-indent": [2, 2],
         "react/jsx-indent-props": [2, 2],
