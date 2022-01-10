@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "MultiTimer",
-    "slug": "multitimer",
+    "name": "Multi Timer",
+    "slug": "multi-timer",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
