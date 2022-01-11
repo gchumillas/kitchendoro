@@ -1,0 +1,20 @@
+.flex {
+  display: flex
+}
+
+.h-full {
+  height: 100%
+}
+
+.items-center {
+  align-items: center
+}
+
+.justify-center {
+  justify-content: center
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
