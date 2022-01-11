@@ -6,6 +6,14 @@
   height: 100%
 }
 
+.w-full {
+  width: 100%
+}
+
+.flex-row {
+  flex-direction: row
+}
+
 .items-center {
   align-items: center
 }
@@ -14,12 +22,15 @@
   justify-content: center
 }
 
+.justify-between {
+  justify-content: space-between
+}
+
+.border {
+  border-width: 1px
+}
+
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
-}
-
-.text-primary {
-  --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity))
 }
