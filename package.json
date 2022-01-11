@@ -7,7 +7,9 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "lint": "eslint ./src"
+    "lint": "eslint ./src",
+    "build:tailwind": "tailwindcss --input input.css --output tailwind.css --no-autoprefixer && tailwind-rn",
+    "dev:tailwind": "concurrently \"tailwindcss --input input.css --output tailwind.css --no-autoprefixer --watch\" \"tailwind-rn --watch\""
   },
   "dependencies": {
     "expo": "~44.0.2",
@@ -18,11 +20,12 @@
     "react-native": "0.64.3",
     "react-native-web": "0.17.1",
     "react-router-native": "^6.2.1",
-    "tailwind-rn": "^3.0.1"
+    "tailwind-rn": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "autoprefixer": "^10.4.2",
+    "concurrently": "^7.0.0",
     "eslint": "^8.6.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.4",

@@ -1,14 +1,18 @@
 import React from 'react'
 import { NativeRouter, Routes, Route } from 'react-router-native'
 import { registerRootComponent } from 'expo'
+import { TailwindProvider } from 'tailwind-rn'
+import utilities from './tailwind.json'
 import HomePage from './src/pages/HomePage'
 
 const App = _ => {
-  return <NativeRouter>
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-    </Routes>
-  </NativeRouter>
+  return <TailwindProvider utilities={utilities}>
+    <NativeRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </NativeRouter>
+  </TailwindProvider>
 }
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
