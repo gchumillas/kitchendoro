@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text } from 'react-native'
-import PageLayout from '../layouts/PageLayout'
+import PageLayout from '~/src/layouts/PageLayout'
 
 const HomePage = _ => {
   return <PageLayout>
