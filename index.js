@@ -5,18 +5,14 @@ import { registerRootComponent } from 'expo'
 import { StatusBar } from 'expo-status-bar'
 import { useFonts } from 'expo-font'
 import { RobotoMono_400Regular } from '@expo-google-fonts/roboto-mono'
-import { TailwindProvider } from 'tailwind-rn'
-import utilities from './tailwind.json'
 import HomePage from './src/pages/HomePage'
 
 const App = _ => {
-  return <TailwindProvider utilities={utilities}>
-    <NativeRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-      </Routes>
-    </NativeRouter>
-  </TailwindProvider>
+  return <NativeRouter>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+    </Routes>
+  </NativeRouter>
 }
 
 const Loading = _ => {
