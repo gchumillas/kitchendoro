@@ -9,6 +9,7 @@ const PageLayout = ({ children }) => {
 
   return <View style={{ ...tw('flex h-full bg-black items-center justify-center'), marginTop: height }}>
     {children}
+    {/* TODO: make status bar transparent */}
     <StatusBar style="auto" />
   </View>
 }
