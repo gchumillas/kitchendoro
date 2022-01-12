@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
-import { NativeModules, StatusBarIOS, Platform, StatusBar } from 'react-native'
+import { NativeModules, StatusBarIOS, Platform, StatusBar, LogBox } from 'react-native'
 import get from 'lodash/get'
 
-const { StatusBarManager } = NativeModules
-
+LogBox.ignoreLogs(['StatusBarIOS has been merged with StatusBar and will be removed in a future release. Use StatusBar for mutating the status bar'])
 export const useStatusBarHeight = () => {
+  const { StatusBarManager } = NativeModules
   // Initialize w/ currentHeight b/c StatusBar.currentHeight works properly on android on Android
   const [height, setHeight] = useState(StatusBar.currentHeight || 0)
 
