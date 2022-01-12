@@ -7,7 +7,7 @@ import { useStatusBarHeight } from '~/src/hooks/utils'
 const PageLayout = ({ children }) => {
   const height = useStatusBarHeight()
 
-  return <View style={{ ...tw('flex h-full bg-white items-center justify-center'), marginTop: height }}>
+  return <View style={{ ...tw('flex h-full bg-black items-center justify-center'), marginTop: height }}>
     {children}
     <StatusBar style="auto" />
   </View>

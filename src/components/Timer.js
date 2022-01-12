@@ -8,17 +8,19 @@ import ProgressBar from '~/src/components/display/ProgressBar'
 const Timer = ({ style = undefined }) => {
   const value = React.useMemo(_ => Math.random(), [])
 
-  return <View style={{ ...style, ...tw('border rounded-md border-black px-2') }}>
+  return <View style={{ ...style, ...tw('border-2 rounded-md border-white px-2') }}>
     <View style={tw('h-6 flex justify-center items-center')}>
-      <Text>New Timer</Text>
+      <Text style={tw('text-white')}>New Timer</Text>
     </View>
     <View style={tw('flex flex-row items-center justify-between')}>
       <Pressable>
-        <MenuIcon />
+        <MenuIcon fill="white" />
       </Pressable>
-      <Text style={{ ...tw('text-4xl mt-1'), fontFamily: 'RobotoMono_400Regular' }}>15:45:00</Text>
+      <Text style={{ ...tw('text-4xl text-white mt-1'), fontFamily: 'RobotoMono_400Regular' }}>
+        15:45:00
+      </Text>
       <Pressable>
-        <PlayIcon />
+        <PlayIcon fill="white" />
       </Pressable>
     </View>
     <View style={tw('h-6 flex justify-center')}>
