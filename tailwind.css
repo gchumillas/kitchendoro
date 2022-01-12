@@ -26,11 +26,12 @@
   justify-content: space-between
 }
 
-.border {
-  border-width: 1px
-}
-
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem
 }
