@@ -1,12 +1,10 @@
 import React from 'react'
 import { Pressable, View, Text } from 'react-native'
-import { useTailwind } from 'tailwind-rn'
+import { tw } from '~/src/libs/tailwind'
 import MenuIcon from '~/assets/icons/menu.svg'
 import PlayIcon from '~/assets/icons/play.svg'
 
 const Timer = _ => {
-  const tw = useTailwind()
-
   return <View style={tw('flex flex-row items-center justify-between')}>
     <Pressable>
       <MenuIcon />
