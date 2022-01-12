@@ -11,7 +11,7 @@ const Timer = _ => {
     <Pressable>
       <MenuIcon />
     </Pressable>
-    <Text>15:45:58</Text>
+    <Text style={{ ...tw('text-3xl'), fontFamily: 'RobotoMono_400Regular' }}>15:45:59</Text>
     <Pressable>
       <PlayIcon />
     </Pressable>
