@@ -7,10 +7,10 @@ import { useStatusBarHeight } from '~/src/hooks/utils'
 const PageLayout = ({ children }) => {
   const height = useStatusBarHeight()
 
-  return <View style={{ ...tw('flex h-full bg-black items-center justify-center'), marginTop: height }}>
+  return <View style={{ ...tw('flex h-full bg-black items-center justify-center'), paddingTop: height }}>
     {children}
     {/* TODO: make status bar transparent */}
-    <StatusBar style="auto" />
+    <StatusBar style="light" />
   </View>
 }
 
