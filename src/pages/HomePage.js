@@ -13,7 +13,7 @@ const HomePage = _ => {
       data={items}
       renderItem={({ item }) => <Timer key={item.id} style={tw('mb-6')} />}
       keyExtractor={item => item.id}
-      style={tw('w-full px-5')} />
+      style={tw('w-full px-5 pt-5')} />
   </PageLayout>
 }
 
