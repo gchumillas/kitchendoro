@@ -9,7 +9,7 @@ const Timer = ({ style = undefined }) => {
   const value = React.useMemo(_ => Math.random(), [])
   const iconSize = 35
 
-  return <View style={[style, tw('border-2 rounded-md border-light px-2')]}>
+  return <View style={[tw('border-2 rounded-md border-light px-2'), style]}>
     <View style={tw('h-6 flex justify-center items-center')}>
       <Text>New Timer</Text>
     </View>
