@@ -1,11 +1,12 @@
 import React from 'react'
-import { Pressable, View } from 'react-native'
+import { Pressable, View, TextInput } from 'react-native'
 import { tw } from '~/src/libs/tailwind'
 import MenuIcon from '~/assets/icons/menu.svg'
 import PlayIcon from '~/assets/icons/play.svg'
 import { ProgressBar, Icon, Text } from '~/src/components/display'
 
 const TimerInput = ({ style = undefined }) => {
+  const [hours, setHours] = React.useState('00')
   const value = React.useMemo(_ => Math.random(), [])
   const iconSize = 35
 
@@ -17,9 +18,10 @@ const TimerInput = ({ style = undefined }) => {
       <Pressable>
         <Icon component={MenuIcon} size={iconSize} />
       </Pressable>
-      <Text style={{ ...tw('text-4xl mt-1'), fontFamily: 'RobotoMono_400Regular' }}>
-        00:00:00
-      </Text>
+      <View style={tw('mt-1 flex flex-row')}>
+        <TextInput value={hours} onChangeText={setHours} style={{ ...tw('text-light text-4xl border border-white'), fontFamily: 'RobotoMono_400Regular' }} />
+        <Text style={{ ...tw('text-4xl'), fontFamily: 'RobotoMono_400Regular' }}>:00:00</Text>
+      </View>
       <Pressable>
         <Icon component={PlayIcon} size={iconSize} />
       </Pressable>
