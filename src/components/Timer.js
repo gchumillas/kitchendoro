@@ -3,7 +3,7 @@ import { Pressable, View, Text } from 'react-native'
 import { tw } from '~/src/libs/tailwind'
 import MenuIcon from '~/assets/icons/menu.svg'
 import PlayIcon from '~/assets/icons/play.svg'
-import ProgressBar from '~/src/components/display/ProgressBar'
+import { ProgressBar, Icon } from '~/src/components/display'
 
 const Timer = ({ style = undefined }) => {
   const value = React.useMemo(_ => Math.random(), [])
@@ -15,13 +15,13 @@ const Timer = ({ style = undefined }) => {
     </View>
     <View style={tw('flex flex-row items-center justify-between')}>
       <Pressable>
-        <MenuIcon fill="white" width={iconSize} height={iconSize} />
+        <Icon component={MenuIcon} size={iconSize} />
       </Pressable>
       <Text style={{ ...tw('text-4xl text-white mt-1'), fontFamily: 'RobotoMono_400Regular' }}>
         15:45:00
       </Text>
       <Pressable>
-        <PlayIcon fill="white" width={iconSize} height={iconSize} />
+        <Icon component={PlayIcon} size={iconSize} />
       </Pressable>
     </View>
     <View style={tw('h-6 flex justify-center')}>
