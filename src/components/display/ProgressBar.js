@@ -9,8 +9,8 @@ import { tw } from '~/src/libs/tailwind'
  * @returns
  */
 const ProgressBar = ({ value }) => {
-  return <View style={tw('relative h-2')}>
-    <View style={{ ...tw('relative h-2 bg-white'), width: `${100 * value}%` }} />
+  return <View style={tw('h-2')}>
+    <View style={{ ...tw('h-2 bg-light'), width: `${100 * value}%` }} />
   </View>
 }
 

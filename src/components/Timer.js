@@ -9,15 +9,15 @@ const Timer = ({ style = undefined }) => {
   const value = React.useMemo(_ => Math.random(), [])
   const iconSize = 35
 
-  return <View style={{ ...style, ...tw('border-2 rounded-md border-white px-2') }}>
+  return <View style={{ ...style, ...tw('border-2 rounded-md border-light px-2') }}>
     <View style={tw('h-6 flex justify-center items-center')}>
-      <Text style={tw('text-white')}>New Timer</Text>
+      <Text style={tw('text-light')}>New Timer</Text>
     </View>
     <View style={tw('flex flex-row items-center justify-between')}>
       <Pressable>
         <Icon component={MenuIcon} size={iconSize} />
       </Pressable>
-      <Text style={{ ...tw('text-4xl text-white mt-1'), fontFamily: 'RobotoMono_400Regular' }}>
+      <Text style={{ ...tw('text-4xl text-light mt-1'), fontFamily: 'RobotoMono_400Regular' }}>
         15:45:00
       </Text>
       <Pressable>
