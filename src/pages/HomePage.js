@@ -25,7 +25,7 @@ const HomePage = _ => {
       renderItem={({ item }) => <Timer key={item.id} style={tw('mb-6')} />}
       keyExtractor={item => item.id}
       style={tw('w-full px-5 pt-5')} />
-    <ContextMenu visible>
+    <ContextMenu visible={false}>
       <ContextMenuItem icon={RenameIcon} label="Rename" onPress={doRenameTimer} />
       <ContextMenuItem icon={DeleteIcon} label="Delete" onPress={doDeleteTimer} />
     </ContextMenu>
