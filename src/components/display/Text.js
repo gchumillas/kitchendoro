@@ -1,9 +1,9 @@
 import React from 'react'
-import { Text } from 'react-native'
+import { Text as RNText } from 'react-native'
 import { tw } from '~/src/libs/tailwind'
 
-const Component = ({ style, ...props }) => {
-  return <Text {...props} style={[tw('text-light'), style]} />
+const Text = ({ style, ...props }) => {
+  return <RNText {...props} style={[tw('text-light'), style]} />
 }
 
-export default Component
+export default Text

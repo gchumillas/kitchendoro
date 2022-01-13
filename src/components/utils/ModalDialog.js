@@ -2,7 +2,7 @@ import React from 'react'
 import { Modal, Pressable, StyleSheet, View, StatusBar } from 'react-native'
 import { tw } from '~/src/libs/tailwind'
 
-const Component = ({ visible = false, onRequestClose = undefined, children }) => {
+const ModalDialog = ({ visible = false, onRequestClose = undefined, children }) => {
   return <Modal animationType="fade" transparent visible={visible} onRequestClose={onRequestClose} statusBarTranslucent>
     <Pressable onPress={onRequestClose}>
       <View style={styles.wrapper}>
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Component
+export default ModalDialog
