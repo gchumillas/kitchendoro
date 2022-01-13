@@ -9,7 +9,6 @@ const PageLayout = ({ children }) => {
 
   return <SafeAreaView style={{ ...tw('flex h-full bg-black items-center justify-center'), paddingTop: height }}>
     {children}
-    {/* TODO: make status bar transparent */}
     <StatusBar style="light" />
   </SafeAreaView>
 }
