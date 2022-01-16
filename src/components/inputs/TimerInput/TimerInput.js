@@ -1,9 +1,10 @@
 import React from 'react'
-import { Pressable, View } from 'react-native'
+import { View } from 'react-native'
 import { tw } from '~/src/libs/tailwind'
 import MenuIcon from '~/assets/icons/menu.svg'
 import PlayIcon from '~/assets/icons/play.svg'
-import { Icon, Text } from '~/src/components/display'
+import { Text } from '~/src/components/display'
+import { IconButton } from '~/src/components/inputs'
 import Input from './Input'
 
 const TimerInput = ({ value, onChange, onSubmit, style = undefined }) => {
@@ -15,9 +16,7 @@ const TimerInput = ({ value, onChange, onSubmit, style = undefined }) => {
       <Text>New Timer</Text>
     </View>
     <View style={tw('flex flex-row items-center justify-between')}>
-      <Pressable>
-        <Icon component={MenuIcon} size={iconSize} />
-      </Pressable>
+      <IconButton icon={MenuIcon} size={iconSize} onPress={onSubmit} />
       <View style={tw('mt-1 flex flex-row')}>
         <Input value={hh} onChange={hh => onChange({ ...value, hh })} />
         <Text style={{ ...tw('text-4xl'), fontFamily: 'RobotoMono_400Regular' }}>:</Text>
@@ -25,9 +24,7 @@ const TimerInput = ({ value, onChange, onSubmit, style = undefined }) => {
         <Text style={{ ...tw('text-4xl'), fontFamily: 'RobotoMono_400Regular' }}>:</Text>
         <Input value={ss} onChange={ss => onChange({ ...value, ss })} />
       </View>
-      <Pressable onPress={onSubmit}>
-        <Icon component={PlayIcon} size={iconSize} />
-      </Pressable>
+      <IconButton icon={PlayIcon} size={iconSize} onPress={onSubmit} />
     </View>
   </View>
 }
