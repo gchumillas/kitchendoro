@@ -1,9 +1,10 @@
 import React from 'react'
-import { Pressable, View } from 'react-native'
+import { View } from 'react-native'
 import { tw } from '~/src/libs/tailwind'
 import MenuIcon from '~/assets/icons/menu.svg'
 import PlayIcon from '~/assets/icons/play.svg'
-import { ProgressBar, Icon, Text } from '~/src/components/display'
+import { ProgressBar, Text } from '~/src/components/display'
+import { IconButton } from '~/src/components/inputs'
 
 const dd = val => {
   const str = `${val}`
@@ -27,15 +28,11 @@ const Timer = ({ seconds, style = undefined }) => {
       <Text>New Timer</Text>
     </View>
     <View style={tw('flex flex-row items-center justify-between')}>
-      <Pressable>
-        <Icon component={MenuIcon} size={iconSize} />
-      </Pressable>
+      <IconButton icon={MenuIcon} size={iconSize} />
       <Text style={{ ...tw('text-4xl mt-1'), fontFamily: 'RobotoMono_400Regular' }}>
         {time}
       </Text>
-      <Pressable>
-        <Icon component={PlayIcon} size={iconSize} />
-      </Pressable>
+      <IconButton icon={PlayIcon} size={iconSize} />
     </View>
     <View style={tw('h-6 flex justify-center')}>
       <ProgressBar value={value} />
