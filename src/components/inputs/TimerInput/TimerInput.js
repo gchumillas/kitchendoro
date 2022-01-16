@@ -5,7 +5,7 @@ import MenuIcon from '~/assets/icons/menu.svg'
 import PlayIcon from '~/assets/icons/play.svg'
 import { Text } from '~/src/components/display'
 import { time2Seconds } from '~/src/libs/utils'
-import { IconButton } from '~/src/components/inputs'
+import IconButton from '../IconButton'
 import Input from './Input'
 
 const TimerInput = ({ value, onChange, onSubmit, style = undefined }) => {
