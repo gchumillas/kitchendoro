@@ -1273,6 +1273,11 @@
     lodash.pick "^4.4.0"
     lodash.template "^4.5.0"
 
+"@gchumillas/schema-fixer@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@gchumillas/schema-fixer/-/schema-fixer-0.1.2.tgz#b317185ea6508be991190f1d0d495da926978439"
+  integrity sha512-/ERSwGoerCOo9FuTozABE8cOts3NHK0qotaJY9oLcv5rDUf76KX89Nks5kKX31PCYgEY8xc8fVt42uXu5XKqfQ==
+
 "@hapi/hoek@^9.0.0":
   version "9.2.1"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.2.1.tgz#9551142a1980503752536b5050fd99f4a7f13b17"
@@ -3409,6 +3414,11 @@ expo-modules-core@0.6.4:
   dependencies:
     compare-versions "^3.4.0"
     invariant "^2.2.4"
+
+expo-secure-store@~11.1.0:
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/expo-secure-store/-/expo-secure-store-11.1.0.tgz#2eb6e793a459e178feeb72bbeb40afc97e412bf6"
+  integrity sha512-LyCLqsoibP90Td4mSWc+un+xGNYnIuGOrfbp2aG2KAn1ZGcDL6muxIaFj7a/4Kh+EiCIoU5EPb1YjOATbmaBnQ==
 
 expo-splash-screen@~0.14.1:
   version "0.14.1"
@@ -6017,6 +6027,11 @@ react-native-svg@12.1.1:
   dependencies:
     css-select "^2.1.0"
     css-tree "^1.0.0-alpha.39"
+
+react-native-uuid@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-uuid/-/react-native-uuid-2.0.1.tgz#ed4e2dfb1683eddb66967eb5dca140dfe1abddb9"
+  integrity sha512-cptnoIbL53GTCrWlb/+jrDC6tvb7ypIyzbXNJcpR3Vab0mkeaaVd5qnB3f0whXYzS+SMoSQLcUUB0gEWqkPC0g==
 
 react-native-web@0.17.1:
   version "0.17.1"
