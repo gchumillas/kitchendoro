@@ -7,6 +7,7 @@ import { useFonts } from 'expo-font'
 import { RobotoMono_400Regular } from '@expo-google-fonts/roboto-mono'
 import HomePage from './src/pages/HomePage'
 
+// TODO: prevent from sleeping
 const App = _ => {
   return <NativeRouter>
     <Routes>
