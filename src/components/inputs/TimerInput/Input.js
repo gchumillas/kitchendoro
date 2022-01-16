@@ -6,6 +6,10 @@ import { Text } from '~/src/components/display'
 const Input = ({ value, onChange }) => {
   const inputRef = React.createRef()
 
+  const doChange = text => {
+    onChange(text.substring(0, 2).replace(/[^\d]/g, ''))
+  }
+
   return <View style={tw('relative border-b-4 border-light')}>
     <Text style={{ ...tw('text-4xl text-transparent'), fontFamily: 'RobotoMono_400Regular' }}>
       00
@@ -15,7 +19,7 @@ const Input = ({ value, onChange }) => {
       ref={inputRef}
       keyboardType="number-pad"
       value={value}
-      onChangeText={onChange}
+      onChangeText={doChange}
       style={{ ...tw('absolute top-0 left-0 w-full text-light text-4xl mt-1'), fontFamily: 'RobotoMono_400Regular' }} />
   </View>
 }
