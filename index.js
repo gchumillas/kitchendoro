@@ -18,7 +18,7 @@ const App = _ => {
 const Loading = _ => {
   // we can't use tailwind features since it's not yet ready
   return <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <ActivityIndicator size='large' />
+    <ActivityIndicator size="large" />
     <StatusBar style="auto" />
   </View>
 }
