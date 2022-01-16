@@ -36,7 +36,7 @@ export const createTimer = async ({ name, seconds }) => {
 
 /**
  * @param {string} id
- * @returns {Promise<{ id: string, text: string, checked: boolean }>}
+ * @returns {Promise<{ id: string, name: string, seconds: number }>}
  */
 export const readTimer = async id => {
   const timers = await getTimers()
