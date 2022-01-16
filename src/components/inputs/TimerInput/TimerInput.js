@@ -1,16 +1,18 @@
 import React from 'react'
-import { Pressable, View, TextInput } from 'react-native'
+import { Pressable, View } from 'react-native'
 import { tw } from '~/src/libs/tailwind'
 import MenuIcon from '~/assets/icons/menu.svg'
 import PlayIcon from '~/assets/icons/play.svg'
-import { ProgressBar, Icon, Text } from '~/src/components/display'
+import { Icon, Text } from '~/src/components/display'
+import Input from './Input'
 
 const TimerInput = ({ style = undefined }) => {
-  const [hours, setHours] = React.useState('00')
-  const value = React.useMemo(_ => Math.random(), [])
+  const [hours, setHours] = React.useState('')
+  const [minutes, setMinutes] = React.useState('')
+  const [seconds, setSeconds] = React.useState('')
   const iconSize = 35
 
-  return <View style={[tw('border-2 rounded-md border-light px-2'), style]}>
+  return <View style={[tw('border-2 rounded-md border-light px-2 pb-6'), style]}>
     <View style={tw('h-6 flex justify-center items-center')}>
       <Text>New Timer</Text>
     </View>
@@ -19,15 +21,15 @@ const TimerInput = ({ style = undefined }) => {
         <Icon component={MenuIcon} size={iconSize} />
       </Pressable>
       <View style={tw('mt-1 flex flex-row')}>
-        <TextInput value={hours} onChangeText={setHours} style={{ ...tw('text-light text-4xl border border-white'), fontFamily: 'RobotoMono_400Regular' }} />
-        <Text style={{ ...tw('text-4xl'), fontFamily: 'RobotoMono_400Regular' }}>:00:00</Text>
+        <Input value={hours} onChange={setHours} />
+        <Text style={{ ...tw('text-4xl'), fontFamily: 'RobotoMono_400Regular' }}>:</Text>
+        <Input value={minutes} onChange={setMinutes} />
+        <Text style={{ ...tw('text-4xl'), fontFamily: 'RobotoMono_400Regular' }}>:</Text>
+        <Input value={seconds} onChange={setSeconds} />
       </View>
       <Pressable>
         <Icon component={PlayIcon} size={iconSize} />
       </Pressable>
-    </View>
-    <View style={tw('h-6 flex justify-center')}>
-      <ProgressBar value={value} />
     </View>
   </View>
 }
