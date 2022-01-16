@@ -11,7 +11,7 @@ const dd = val => {
   return `${'0'.repeat(Math.max(0, 2 - str.length))}${str}`
 }
 
-const Timer = ({ seconds, style = undefined }) => {
+const Timer = ({ seconds, name, style = undefined }) => {
   const value = React.useMemo(_ => Math.random(), [])
 
   const time = React.useMemo(_ => {
@@ -24,7 +24,7 @@ const Timer = ({ seconds, style = undefined }) => {
 
   return <View style={[tw('border-2 rounded-md border-light px-2'), style]}>
     <View style={tw('h-6 flex justify-center items-center')}>
-      <Text>New Timer</Text>
+      <Text>{name}</Text>
     </View>
     <View style={tw('flex flex-row items-center justify-between')}>
       <IconButton icon={MenuIcon} />
