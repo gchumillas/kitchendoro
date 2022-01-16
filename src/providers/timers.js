@@ -36,6 +36,16 @@ export const createTimer = async ({ name, seconds }) => {
 
 /**
  * @param {string} id
+ * @returns {Promise<{ id: string, text: string, checked: boolean }>}
+ */
+export const readTimer = async id => {
+  const timers = await getTimers()
+
+  return timers.find(x => x.id == id)
+}
+
+/**
+ * @param {string} id
  */
 export const deleteTimer = async id => {
   const timers = await getTimers()
