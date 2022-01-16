@@ -8,6 +8,7 @@ import ContextMenu, { ContextMenuItem } from '~/src/components/ContextMenu'
 import { TimerInput } from '~/src/components/inputs'
 import { getTimers, createTimer, deleteTimer } from '~/src/providers/timers'
 import Timer from './Timer'
+import { context } from './context'
 import RenameIcon from '~/assets/icons/rename.svg'
 import DeleteIcon from '~/assets/icons/delete.svg'
 
@@ -40,20 +41,22 @@ const HomePage = _ => {
     reload()
   }, [])
 
-  return <PageLayout>
-    <FlatList
-      keyboardShouldPersistTaps="handled"
-      data={items}
-      renderItem={({ item }) => item.type == 'input'
-        ? <TimerInput key={item.id} value={time} onChange={setTime} onSubmit={doCreateTimer} />
-        : <Timer key={item.id} id={item.id} seconds={item.seconds} name={item.name} onSelect={setSelectedTimerId} style={tw('mb-6')} />}
-      keyExtractor={item => item.id}
-      style={tw('w-full px-5 pt-5')} />
-    <ContextMenu visible={!!selectedTimerId} onRequestClose={_ => setSelectedTimerId(null)}>
-      <ContextMenuItem icon={RenameIcon} label="Rename" onPress={doRenameTimer} />
-      <ContextMenuItem icon={DeleteIcon} label="Delete" onPress={doDeleteTimer} />
-    </ContextMenu>
-  </PageLayout>
+  return <context.Provider value={React.useMemo(_ => ({ reload }), [])}>
+    <PageLayout>
+      <FlatList
+        keyboardShouldPersistTaps="handled"
+        data={items}
+        renderItem={({ item }) => item.type == 'input'
+          ? <TimerInput key={item.id} value={time} onChange={setTime} onSubmit={doCreateTimer} />
+          : <Timer key={item.id} id={item.id} seconds={item.seconds} name={item.name} onSelect={setSelectedTimerId} style={tw('mb-6')} />}
+        keyExtractor={item => item.id}
+        style={tw('w-full px-5 pt-5')} />
+      <ContextMenu visible={!!selectedTimerId} onRequestClose={_ => setSelectedTimerId(null)}>
+        <ContextMenuItem icon={RenameIcon} label="Rename" onPress={doRenameTimer} />
+        <ContextMenuItem icon={DeleteIcon} label="Delete" onPress={doDeleteTimer} />
+      </ContextMenu>
+    </PageLayout>
+  </context.Provider>
 }
 
 export default HomePage
