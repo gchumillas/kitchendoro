@@ -16,7 +16,6 @@ const dd = val => {
 }
 
 const Timer = ({ seconds, name, style = undefined }) => {
-  const value = React.useMemo(_ => Math.random(), [])
   const [countdown, setCountdown] = React.useState(0)
   const [running, setRunning] = React.useState(false)
   const intervalRef = React.useRef(null)
@@ -68,7 +67,7 @@ const Timer = ({ seconds, name, style = undefined }) => {
         : <IconButton icon={PlayIcon} onPress={doStart} />}
     </View>
     <View style={tw('h-6 flex justify-center')}>
-      <ProgressBar value={value} />
+      <ProgressBar value={Math.max(0, countdown) / seconds} />
     </View>
   </View>
 }
