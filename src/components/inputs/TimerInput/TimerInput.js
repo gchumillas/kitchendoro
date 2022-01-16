@@ -6,10 +6,8 @@ import PlayIcon from '~/assets/icons/play.svg'
 import { Icon, Text } from '~/src/components/display'
 import Input from './Input'
 
-const TimerInput = ({ style = undefined }) => {
-  const [hours, setHours] = React.useState('')
-  const [minutes, setMinutes] = React.useState('')
-  const [seconds, setSeconds] = React.useState('')
+const TimerInput = ({ value, onChange, onSubmit, style = undefined }) => {
+  const { hh, mm, ss } = value
   const iconSize = 35
 
   return <View style={[tw('border-2 rounded-md border-light px-2 pb-6'), style]}>
@@ -21,13 +19,13 @@ const TimerInput = ({ style = undefined }) => {
         <Icon component={MenuIcon} size={iconSize} />
       </Pressable>
       <View style={tw('mt-1 flex flex-row')}>
-        <Input value={hours} onChange={setHours} />
+        <Input value={hh} onChange={hh => onChange({ ...value, hh })} />
         <Text style={{ ...tw('text-4xl'), fontFamily: 'RobotoMono_400Regular' }}>:</Text>
-        <Input value={minutes} onChange={setMinutes} />
+        <Input value={mm} onChange={mm => onChange({ ...value, mm })} />
         <Text style={{ ...tw('text-4xl'), fontFamily: 'RobotoMono_400Regular' }}>:</Text>
-        <Input value={seconds} onChange={setSeconds} />
+        <Input value={ss} onChange={ss => onChange({ ...value, ss })} />
       </View>
-      <Pressable>
+      <Pressable onPress={onSubmit}>
         <Icon component={PlayIcon} size={iconSize} />
       </Pressable>
     </View>
