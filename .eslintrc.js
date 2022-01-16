@@ -28,6 +28,7 @@ module.exports = {
         "arrow-parens": ["error", "as-needed"],
         "camelcase": "off",
         "react/prop-types": "off",
+        "jsx-quotes": ["error", "prefer-double"],
         "react/jsx-indent": [2, 2],
         "react/jsx-indent-props": [2, 2],
         "react/jsx-boolean-value": ["error", "never"],
