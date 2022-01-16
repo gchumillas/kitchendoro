@@ -2,7 +2,7 @@ import * as ss from 'expo-secure-store'
 import uuid from 'react-native-uuid'
 import { fix, pipes } from '@gchumillas/schema-fixer'
 
-const fixTimers = timers => fix(timers, pipes.array({ type: { id: 'string', name: 'string', number: 'number' } }))
+const fixTimers = timers => fix(timers, pipes.array({ type: { id: 'string', name: 'string', seconds: 'number' } }))
 
 const saveTimers = async timers => {
   await ss.setItemAsync('timers', JSON.stringify(fixTimers(timers)))

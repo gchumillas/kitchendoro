@@ -33,8 +33,9 @@ const HomePage = _ => {
     const { hh, mm, ss } = time
     const seconds = text2Number(hh) * 3600 + text2Number(mm) * 60 + text2Number(ss)
 
+    setTime({ hh: '', mm: '', ss: '' })
     await createTimer({ name: 'New Timer', seconds })
-    reload()
+    await reload()
   }
 
   React.useEffect(_ => {
