@@ -2,18 +2,14 @@ import React from 'react'
 import { FlatList } from 'react-native'
 import uuid from 'react-native-uuid'
 import { tw } from '~/src/libs/tailwind'
-import RenameIcon from '~/assets/icons/rename.svg'
-import DeleteIcon from '~/assets/icons/delete.svg'
-import ContextMenu, { ContextMenuItem } from '~/src/components/ContextMenu'
+import { time2Seconds } from '~/src/libs/utils'
 import PageLayout from '~/src/layouts/PageLayout'
+import ContextMenu, { ContextMenuItem } from '~/src/components/ContextMenu'
 import { TimerInput } from '~/src/components/inputs'
 import Timer from '~/src/components/Timer'
 import { getTimers, createTimer } from '~/src/providers/timers'
-
-const text2Number = text => {
-  const val = parseInt(text, 10)
-  return isNaN(val) ? 0 : val
-}
+import RenameIcon from '~/assets/icons/rename.svg'
+import DeleteIcon from '~/assets/icons/delete.svg'
 
 const HomePage = _ => {
   const [time, setTime] = React.useState({ hh: '', mm: '', ss: '' })
@@ -30,8 +26,7 @@ const HomePage = _ => {
   }
 
   const doCreateTimer = async _ => {
-    const { hh, mm, ss } = time
-    const seconds = text2Number(hh) * 3600 + text2Number(mm) * 60 + text2Number(ss)
+    const seconds = time2Seconds(time)
 
     setTime({ hh: '', mm: '', ss: '' })
     await createTimer({ name: 'New Timer', seconds })
