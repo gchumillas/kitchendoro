@@ -22,9 +22,10 @@ const Timer = ({ seconds, name, style = undefined }) => {
   const overTime = running && countdown <= 0
 
   const time = React.useMemo(_ => {
-    const ss = countdown % 60
-    const mm = Math.floor(countdown / 60) % 60
-    const hh = Math.floor(countdown / 3600)
+    const val = Math.abs(countdown)
+    const ss = val % 60
+    const mm = Math.floor(val / 60) % 60
+    const hh = Math.floor(val / 3600)
 
     return `${dd(hh)}:${dd(mm)}:${dd(ss)}`
   }, [countdown])
