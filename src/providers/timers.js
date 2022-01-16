@@ -30,7 +30,7 @@ export const createTimer = async ({ name, seconds }) => {
   const timers = await getTimers()
   const id = uuid.v1()
 
-  await saveTimers([{ id, name, seconds }, ...timers])
+  await saveTimers([...timers, { id, name, seconds }])
   return id
 }
 
