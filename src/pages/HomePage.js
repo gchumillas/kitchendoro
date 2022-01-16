@@ -22,6 +22,7 @@ const doDeleteTimer = _ => {
 const HomePage = _ => {
   return <PageLayout>
     <FlatList
+      keyboardShouldPersistTaps="handled"
       data={items}
       renderItem={({ item }) => item.type == 'timer' ? <Timer key={item.id} style={tw('mb-6')} /> : <TimerInput />}
       keyExtractor={item => item.id}
