@@ -1,5 +1,6 @@
 import React from 'react'
 import { FlatList } from 'react-native'
+import { Outlet, useNavigate } from 'react-router-native'
 import uuid from 'react-native-uuid'
 import { tw } from '~/src/libs/tailwind'
 import { time2Seconds } from '~/src/libs/utils'
@@ -13,14 +14,17 @@ import RenameIcon from '~/assets/icons/rename.svg'
 import DeleteIcon from '~/assets/icons/delete.svg'
 
 const HomePage = _ => {
+  const navigate = useNavigate()
   const [time, setTime] = React.useState({ hh: '', mm: '', ss: '' })
   const [timers, setTimers] = React.useState([])
   const items = React.useMemo(_ => [...timers, { id: uuid.v1(), type: 'input' }], [JSON.stringify(timers)])
   const [selectedTimerId, setSelectedTimerId] = React.useState('')
   const reload = async _ => setTimers(await getTimers())
+  const doCloseDialog = _ => setSelectedTimerId('')
 
   const doRenameTimer = _ => {
-    console.log('unimplemented')
+    navigate(`/rename-timer/${selectedTimerId}`)
+    doCloseDialog()
   }
 
   const doDeleteTimer = async _ => {
@@ -51,11 +55,12 @@ const HomePage = _ => {
           : <Timer key={item.id} id={item.id} seconds={item.seconds} name={item.name} onSelect={setSelectedTimerId} style={tw('mb-6')} />}
         keyExtractor={item => item.id}
         style={tw('w-full px-5 pt-5')} />
-      <ContextMenu visible={!!selectedTimerId} onRequestClose={_ => setSelectedTimerId(null)}>
+      <ContextMenu visible={!!selectedTimerId} onRequestClose={doCloseDialog}>
         <ContextMenuItem icon={RenameIcon} label="Rename" onPress={doRenameTimer} />
         <ContextMenuItem icon={DeleteIcon} label="Delete" onPress={doDeleteTimer} />
       </ContextMenu>
     </PageLayout>
+    <Outlet />
   </context.Provider>
 }
 
