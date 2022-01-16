@@ -1,5 +1,6 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, StyleSheet } from 'react-native'
+import cn from 'react-native-classnames'
 import { tw } from '~/src/libs/tailwind'
 import MenuIcon from '~/assets/icons/menu.svg'
 import PlayIcon from '~/assets/icons/play.svg'
@@ -17,6 +18,8 @@ const Timer = ({ seconds, name, style = undefined }) => {
   const [countdown, setCountdown] = React.useState(0)
   const [running, setRunning] = React.useState(false)
   const intervalRef = React.useRef(null)
+  const inTime = running && countdown > 0
+  const overTime = running && countdown <= 0
 
   const time = React.useMemo(_ => {
     const ss = countdown % 60
@@ -44,10 +47,11 @@ const Timer = ({ seconds, name, style = undefined }) => {
   React.useEffect(_ => {
     return _ => {
       clearInterval(intervalRef.current)
+      setRunning(false)
     }
   }, [])
 
-  return <View style={[tw('border-2 rounded-md border-light px-2'), style]}>
+  return <View style={[cn(styles, 'container', { inTime, overTime }), style]}>
     <View style={tw('h-6 flex justify-center items-center')}>
       <Text>{name}</Text>
     </View>
@@ -65,5 +69,11 @@ const Timer = ({ seconds, name, style = undefined }) => {
     </View>
   </View>
 }
+
+const styles = StyleSheet.create({
+  container: tw('border-2 rounded-md border-light px-2'),
+  inTime: tw('border-green-300'),
+  overTime: tw('border-red-300')
+})
 
 export default Timer
