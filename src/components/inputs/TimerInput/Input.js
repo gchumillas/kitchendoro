@@ -7,7 +7,7 @@ const Input = ({ value, onChange }) => {
   const inputRef = React.createRef()
 
   return <View style={tw('relative border-b-4 border-light')}>
-    <Text style={{ ...tw('text-4xl text-transparent00'), fontFamily: 'RobotoMono_400Regular' }}>
+    <Text style={{ ...tw('text-4xl text-transparent'), fontFamily: 'RobotoMono_400Regular' }}>
       00
     </Text>
     <TextInput
