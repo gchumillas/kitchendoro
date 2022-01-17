@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-native'
 import { Button, TextField } from '~/src/components/inputs'
 import { updateTimer, readTimer } from '~/src/providers/timers'
 import DialogLayout from '~/src/layouts/DialogLayout'
-import { context } from '~/src/pages/HomePage'
+import { context } from './context'
 
 const RenameDialog = _ => {
   const { reload } = React.useContext(context)

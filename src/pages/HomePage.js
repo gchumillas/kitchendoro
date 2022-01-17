@@ -9,9 +9,9 @@ import ContextMenu, { ContextMenuItem } from '~/src/components/ContextMenu'
 import Timer from '~/src/components/Timer'
 import { TimerInput } from '~/src/components/inputs'
 import { getTimers, createTimer, deleteTimer, saveTimer } from '~/src/providers/timers'
-import { context } from './context'
 import RenameIcon from '~/assets/icons/rename.svg'
 import DeleteIcon from '~/assets/icons/delete.svg'
+import { context } from './context'
 
 const HomePage = _ => {
   const navigate = useNavigate()
