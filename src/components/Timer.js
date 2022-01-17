@@ -6,8 +6,8 @@ import MenuIcon from '~/assets/icons/menu.svg'
 import PlayIcon from '~/assets/icons/play.svg'
 import StopIcon from '~/assets/icons/stop.svg'
 import { IconButton } from '~/src/components/inputs'
-import ProgressBar from './ProgressBar'
-import Text from './Text'
+import ProgressBar from './display/ProgressBar'
+import Text from './display/Text'
 
 const maxSeconds = 99 * 3600 + 59 * 60 + 60
 
