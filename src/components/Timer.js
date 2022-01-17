@@ -5,9 +5,9 @@ import { tw } from '~/src/libs/tailwind'
 import MenuIcon from '~/assets/icons/menu.svg'
 import PlayIcon from '~/assets/icons/play.svg'
 import StopIcon from '~/assets/icons/stop.svg'
+import { useCountdown } from '~/src/hooks/timer'
 import { IconButton } from '~/src/components/inputs'
-import ProgressBar from './display/ProgressBar'
-import Text from './display/Text'
+import { ProgressBar, Text } from './display'
 
 const maxSeconds = 99 * 3600 + 59 * 60 + 60
 
@@ -17,7 +17,7 @@ const dd = val => {
 }
 
 const Timer = ({ running, startFrom, seconds, name, onStart, onStop, onSelect, style = undefined }) => {
-  const [countdown, setCountdown] = React.useState(0)
+  const countdown = useCountdown({ running, startFrom, seconds })
   const inTime = running && countdown > 0
   const overTime = running && countdown <= 0
 
@@ -29,21 +29,6 @@ const Timer = ({ running, startFrom, seconds, name, onStart, onStop, onSelect, s
 
     return `${dd(hh)}:${dd(mm)}:${dd(ss)}`
   }, [countdown])
-
-  React.useEffect(_ => {
-    setCountdown(seconds)
-
-    const interval = setInterval(_ => {
-      if (running) {
-        const elapsedTime = Math.floor((Date.now() - startFrom) / 1000)
-        setCountdown(value => seconds - elapsedTime)
-      }
-    }, 1000)
-
-    return _ => {
-      clearInterval(interval)
-    }
-  }, [seconds, running, startFrom])
 
   return <View style={[cn(styles, 'container', { inTime, overTime }), style]}>
     <View style={tw('h-6 flex justify-center items-center')}>
