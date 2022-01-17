@@ -7,7 +7,7 @@ import { time2Seconds } from '~/src/libs/utils'
 import PageLayout from '~/src/layouts/PageLayout'
 import ContextMenu, { ContextMenuItem } from '~/src/components/ContextMenu'
 import { TimerInput } from '~/src/components/inputs'
-import { getTimers, createTimer, deleteTimer } from '~/src/providers/timers'
+import { getTimers, createTimer, deleteTimer, saveTimer } from '~/src/providers/timers'
 import Timer from './Timer'
 import { context } from './context'
 import RenameIcon from '~/assets/icons/rename.svg'
@@ -17,10 +17,14 @@ const HomePage = _ => {
   const navigate = useNavigate()
   const [time, setTime] = React.useState({ hh: '', mm: '', ss: '' })
   const [timers, setTimers] = React.useState([])
-  const items = React.useMemo(_ => [...timers, { id: uuid.v1(), type: 'input' }], [JSON.stringify(timers)])
   const [selectedTimerId, setSelectedTimerId] = React.useState('')
   const reload = async _ => setTimers(await getTimers())
   const doCloseDialog = _ => setSelectedTimerId('')
+
+  // the items includes the timers and also the 'timer input' to create new timers
+  const items = React.useMemo(_ => {
+    return [...timers, { id: uuid.v1(), type: 'input' }]
+  }, [JSON.stringify(timers)])
 
   const doRenameTimer = _ => {
     navigate(`/rename-timer/${selectedTimerId}`)
@@ -30,6 +34,16 @@ const HomePage = _ => {
   const doDeleteTimer = async _ => {
     setSelectedTimerId(null)
     await deleteTimer(selectedTimerId)
+    reload()
+  }
+
+  const doStartTimer = async timerId => {
+    await saveTimer(timerId, timer => ({ running: true, startFrom: Date.now() }))
+    reload()
+  }
+
+  const doStopTimer = async timerId => {
+    await saveTimer(timerId, timer => ({ running: false, startFrom: false }))
     reload()
   }
 
@@ -52,7 +66,16 @@ const HomePage = _ => {
         data={items}
         renderItem={({ item }) => item.type == 'input'
           ? <TimerInput key={item.id} value={time} onChange={setTime} onSubmit={doCreateTimer} />
-          : <Timer key={item.id} seconds={item.seconds} name={item.name} onSelect={_ => setSelectedTimerId(item.id)} style={tw('mb-6')} />}
+          : <Timer
+              key={item.id}
+              running={item.running}
+              startFrom={item.startFrom}
+              seconds={item.seconds}
+              name={item.name}
+              onStart={_ => doStartTimer(item.id)}
+              onStop={_ => doStopTimer(item.id)}
+              onSelect={_ => setSelectedTimerId(item.id)}
+              style={tw('mb-6')} />}
         keyExtractor={item => item.id}
         style={tw('w-full px-5 pt-5')} />
       <ContextMenu visible={!!selectedTimerId} onRequestClose={doCloseDialog}>

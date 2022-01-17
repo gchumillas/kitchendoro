@@ -2,7 +2,18 @@ import * as ss from 'expo-secure-store'
 import uuid from 'react-native-uuid'
 import { fix, pipes } from '@gchumillas/schema-fixer'
 
-const fixTimers = timers => fix(timers, pipes.array({ type: { id: 'string', name: 'string', seconds: 'number' } }))
+const fixTimers = timers => fix(
+  timers,
+  pipes.array({
+    type: {
+      id: 'string',
+      name: 'string',
+      seconds: 'number',
+      startFrom: 'number', // UNIX time in milliseconds
+      running: 'boolean'
+    }
+  })
+)
 
 const saveTimers = async timers => {
   await ss.setItemAsync('timers', JSON.stringify(fixTimers(timers)))
@@ -30,7 +41,7 @@ export const createTimer = async ({ name, seconds }) => {
   const timers = await getTimers()
   const id = uuid.v1()
 
-  await saveTimers([...timers, { id, name, seconds }])
+  await saveTimers([...timers, { id, name, seconds, start: 0, running: false }])
   return id
 }
 
@@ -51,6 +62,12 @@ export const updateTimer = async ({ id, name }) => {
   const articles = await getTimers()
 
   await saveTimers(articles.map(x => x.id == id ? ({ ...x, name }) : x))
+}
+
+export const saveTimer = async (id, callback) => {
+  const timers = await getTimers()
+
+  await saveTimers(timers.map(x => x.id == id ? { ...x, ...callback(x) } : x))
 }
 
 /**

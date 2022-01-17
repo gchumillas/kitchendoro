@@ -15,10 +15,8 @@ const dd = val => {
   return `${'0'.repeat(Math.max(0, 2 - str.length))}${str}`
 }
 
-const Timer = ({ seconds, name, onSelect, style = undefined }) => {
+const Timer = ({ running, startFrom, seconds, name, onStart, onStop, onSelect, style = undefined }) => {
   const [countdown, setCountdown] = React.useState(0)
-  const [running, setRunning] = React.useState(false)
-  const intervalRef = React.useRef(null)
   const inTime = running && countdown > 0
   const overTime = running && countdown <= 0
 
@@ -31,27 +29,20 @@ const Timer = ({ seconds, name, onSelect, style = undefined }) => {
     return `${dd(hh)}:${dd(mm)}:${dd(ss)}`
   }, [countdown])
 
-  const doStart = _ => {
-    intervalRef.current = setInterval(_ => setCountdown(val => val - 1), 1000)
-    setRunning(true)
-  }
-
-  const doStop = _ => {
-    clearInterval(intervalRef.current)
-    setCountdown(seconds)
-    setRunning(false)
-  }
-
   React.useEffect(_ => {
     setCountdown(seconds)
-  }, [seconds])
 
-  React.useEffect(_ => {
+    const interval = setInterval(_ => {
+      if (running) {
+        const elapsedTime = Math.floor((Date.now() - startFrom) / 1000)
+        setCountdown(value => seconds - elapsedTime)
+      }
+    }, 1000)
+
     return _ => {
-      clearInterval(intervalRef.current)
-      setRunning(false)
+      clearInterval(interval)
     }
-  }, [])
+  }, [seconds, running, startFrom])
 
   return <View style={[cn(styles, 'container', { inTime, overTime }), style]}>
     <View style={tw('h-6 flex justify-center items-center')}>
@@ -63,8 +54,8 @@ const Timer = ({ seconds, name, onSelect, style = undefined }) => {
         {time}
       </Text>
       {running
-        ? <IconButton icon={StopIcon} onPress={doStop} />
-        : <IconButton icon={PlayIcon} onPress={doStart} />}
+        ? <IconButton icon={StopIcon} onPress={onStop} />
+        : <IconButton icon={PlayIcon} onPress={onStart} />}
     </View>
     <View style={tw('h-6 flex justify-center')}>
       <ProgressBar value={Math.max(0, countdown) / seconds} />
