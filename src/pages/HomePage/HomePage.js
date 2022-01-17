@@ -52,7 +52,7 @@ const HomePage = _ => {
         data={items}
         renderItem={({ item }) => item.type == 'input'
           ? <TimerInput key={item.id} value={time} onChange={setTime} onSubmit={doCreateTimer} />
-          : <Timer key={item.id} id={item.id} seconds={item.seconds} name={item.name} onSelect={setSelectedTimerId} style={tw('mb-6')} />}
+          : <Timer key={item.id} seconds={item.seconds} name={item.name} onSelect={_ => setSelectedTimerId(item.id)} style={tw('mb-6')} />}
         keyExtractor={item => item.id}
         style={tw('w-full px-5 pt-5')} />
       <ContextMenu visible={!!selectedTimerId} onRequestClose={doCloseDialog}>

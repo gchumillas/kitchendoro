@@ -15,7 +15,7 @@ const dd = val => {
   return `${'0'.repeat(Math.max(0, 2 - str.length))}${str}`
 }
 
-const Timer = ({ id, seconds, name, onSelect, style = undefined }) => {
+const Timer = ({ seconds, name, onSelect, style = undefined }) => {
   const [countdown, setCountdown] = React.useState(0)
   const [running, setRunning] = React.useState(false)
   const intervalRef = React.useRef(null)
@@ -58,7 +58,7 @@ const Timer = ({ id, seconds, name, onSelect, style = undefined }) => {
       <Text>{name}</Text>
     </View>
     <View style={tw('flex flex-row items-center justify-between')}>
-      <IconButton icon={MenuIcon} onPress={_ => onSelect(id)} />
+      <IconButton icon={MenuIcon} onPress={onSelect} />
       <Text style={{ ...tw('text-4xl mt-1'), fontFamily: 'RobotoMono_400Regular' }}>
         {time}
       </Text>
