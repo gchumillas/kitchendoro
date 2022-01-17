@@ -55,10 +55,6 @@ const HomePage = _ => {
     reload()
   }
 
-  React.useEffect(_ => {
-    reload()
-  }, [])
-
   return <context.Provider value={React.useMemo(_ => ({ reload }), [])}>
     <PageLayout>
       <FlatList
