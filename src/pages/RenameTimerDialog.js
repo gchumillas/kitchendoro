@@ -13,7 +13,7 @@ const RenameDialog = _ => {
   const doClose = _ => navigate('/')
 
   const doSave = async _ => {
-    await updateTimer({ id, name })
+    await updateTimer(id, { name })
     reload()
     navigate('/')
   }

@@ -56,18 +56,14 @@ export const readTimer = async id => {
 }
 
 /**
- * @param {{ id: string, name: string }} props
+ *
+ * @param {string} id
+ * @param {{ name?: string, seconds?: number, startFrom?: number, running?:  boolean }} timer
  */
-export const updateTimer = async ({ id, name }) => {
-  const articles = await getTimers()
-
-  await saveTimers(articles.map(x => x.id == id ? ({ ...x, name }) : x))
-}
-
-export const saveTimer = async (id, callback) => {
+export const updateTimer = async (id, timer) => {
   const timers = await getTimers()
 
-  await saveTimers(timers.map(x => x.id == id ? { ...x, ...callback(x) } : x))
+  await saveTimers(timers.map(x => x.id == id ? { ...x, ...timer } : x))
 }
 
 /**

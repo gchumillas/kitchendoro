@@ -8,7 +8,7 @@ import PageLayout from '~/src/layouts/PageLayout'
 import ContextMenu, { ContextMenuItem } from '~/src/components/ContextMenu'
 import Timer from '~/src/components/Timer'
 import { TimerInput } from '~/src/components/inputs'
-import { getTimers, createTimer, deleteTimer, saveTimer } from '~/src/providers/timers'
+import { getTimers, createTimer, deleteTimer, updateTimer } from '~/src/providers/timers'
 import RenameIcon from '~/assets/icons/rename.svg'
 import DeleteIcon from '~/assets/icons/delete.svg'
 import { context } from './context'
@@ -38,12 +38,12 @@ const HomePage = _ => {
   }
 
   const doStartTimer = async timerId => {
-    await saveTimer(timerId, timer => ({ running: true, startFrom: Date.now() }))
+    await updateTimer(timerId, { running: true, startFrom: Date.now() })
     reload()
   }
 
   const doStopTimer = async timerId => {
-    await saveTimer(timerId, timer => ({ running: false, startFrom: false }))
+    await updateTimer(timerId, { running: false, startFrom: false })
     reload()
   }
 
