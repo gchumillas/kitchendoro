@@ -13,6 +13,8 @@ PODS:
     - ExpoModulesCore
   - EXKeepAwake (10.0.1):
     - ExpoModulesCore
+  - EXNotifications (0.14.0):
+    - ExpoModulesCore
   - Expo (44.0.4):
     - ExpoModulesCore
   - ExpoModulesCore (0.6.4):
@@ -293,6 +295,8 @@ PODS:
     - React-perflogger (= 0.64.3)
   - RNSVG (12.1.1):
     - React
+  - UMTaskManagerInterface (7.1.0):
+    - ExpoModulesCore
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -303,6 +307,7 @@ DEPENDENCIES:
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXFont (from `../node_modules/expo-font/ios`)
   - EXKeepAwake (from `../node_modules/expo-keep-awake/ios`)
+  - EXNotifications (from `../node_modules/expo-notifications/ios`)
   - Expo (from `../node_modules/expo/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core/ios`)
   - EXSecureStore (from `../node_modules/expo-secure-store/ios`)
@@ -337,6 +342,7 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNSVG (from `../node_modules/react-native-svg`)
+  - UMTaskManagerInterface (from `../node_modules/unimodules-task-manager-interface/ios`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -358,6 +364,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-font/ios"
   EXKeepAwake:
     :path: "../node_modules/expo-keep-awake/ios"
+  EXNotifications:
+    :path: "../node_modules/expo-notifications/ios"
   Expo:
     :path: "../node_modules/expo/ios"
   ExpoModulesCore:
@@ -422,6 +430,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNSVG:
     :path: "../node_modules/react-native-svg"
+  UMTaskManagerInterface:
+    :path: "../node_modules/unimodules-task-manager-interface/ios"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -434,6 +444,7 @@ SPEC CHECKSUMS:
   EXFileSystem: 7d1309ba6b38b82ef7fc9e80174de3f9184ac8b4
   EXFont: 1fb13af43dc517c01c0ff21a6e32f9f9bf2ea602
   EXKeepAwake: b571c2ad8323b2fced6e907766e2549f75119471
+  EXNotifications: d5b454a2363c8743aa9b2888cc0df70a1d9ee816
   Expo: d9b8b5e49c200471fc473a652a84fe30dee73027
   ExpoModulesCore: 64abda7af7cf659d2fa092934e29c6f4ea7e849f
   EXSecureStore: fa0fdde1c81ceee2a3cb0519e649feae42767969
@@ -466,6 +477,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 493d9abb8b23c3f84e19ae221eeba92cadcb70dc
   ReactCommon: 8fea6422328e2fc093e25c9fac67adbcf0f04fb4
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
+  UMTaskManagerInterface: 6f7150f9ec9bc6f2760eeae532a70de71ff951c1
   Yoga: e6ecf3fa25af9d4c87e94ad7d5d292eedef49749
 
 PODFILE CHECKSUM: c18a077812c612874cfa0dd48c9b4b8ae41fabf3
