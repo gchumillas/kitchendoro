@@ -1,5 +1,20 @@
 A multi-timer application.
 
+## Screenshots
+
+## Test the application
+
+```bash
+# install libraries
+yarn
+
+# run in iOS
+yarn ios
+
+# alternatively you can your on Android
+yarn android
+```
+
 ## Development
 
 ```bash
