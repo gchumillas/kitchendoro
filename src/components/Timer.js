@@ -16,25 +16,13 @@ const dd = val => {
   return `${'0'.repeat(Math.max(0, 2 - str.length))}${str}`
 }
 
-const rgba2hex = rgb => {
-  rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i)
-  return (rgb && rgb.length === 4)
-    ? '#' +
-   ('0' + parseInt(rgb[1], 10).toString(16)).slice(-2) +
-   ('0' + parseInt(rgb[2], 10).toString(16)).slice(-2) +
-   ('0' + parseInt(rgb[3], 10).toString(16)).slice(-2)
-    : ''
-}
-
 const Timer = ({ running, startFrom, seconds, name, onStart, onStop, onSelect, style = undefined }) => {
   const countdown = useCountdown({ running, startFrom, seconds })
   const inTime = running && countdown > 0
   const overTime = running && countdown <= 0
   const color = React.useMemo(_ => inTime
-    ? rgba2hex(getColor('green-300'))
-    : overTime
-      ? rgba2hex(getColor('red-300'))
-      : rgba2hex(getColor('light')), [inTime, overTime])
+    ? getColor('green-300')
+    : (overTime ? getColor('red-300') : getColor('light')), [inTime, overTime])
 
   const time = React.useMemo(_ => {
     const val = Math.abs(countdown) % maxSeconds
