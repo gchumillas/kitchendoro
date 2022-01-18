@@ -2,7 +2,7 @@ import React from 'react'
 import { FlatList } from 'react-native'
 import { Outlet, useNavigate } from 'react-router-native'
 import uuid from 'react-native-uuid'
-import { tw } from '~/src/libs/tailwind'
+import { getColor, tw } from '~/src/libs/tailwind'
 import { time2Seconds } from '~/src/libs/utils'
 import PageLayout from '~/src/layouts/PageLayout'
 import ContextMenu, { ContextMenuItem } from '~/src/components/ContextMenu'
@@ -85,7 +85,7 @@ const HomePage = _ => {
         style={tw('w-full px-5 pt-5')} />
       <ContextMenu visible={!!selectedTimerId} onRequestClose={doCloseDialog}>
         <ContextMenuItem icon={RenameIcon} label="Rename" onPress={doRenameTimer} />
-        <ContextMenuItem icon={DeleteIcon} label="Delete" onPress={doDeleteTimer} />
+        <ContextMenuItem icon={DeleteIcon} label="Delete" onPress={doDeleteTimer} color={getColor('red-800')} />
       </ContextMenu>
     </PageLayout>
     <Outlet />

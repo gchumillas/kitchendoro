@@ -3,10 +3,10 @@ import { Pressable } from 'react-native'
 import { getColor, tw } from '~/src/libs/tailwind'
 import { Text, Icon } from '~/src/components/display'
 
-const ContextMenuItem = ({ label, icon, onPress }) => {
+const ContextMenuItem = ({ label, icon, color = getColor('dark'), onPress }) => {
   return <Pressable onPress={onPress} style={tw('flex flex-row items-center my-1.5')}>
-    <Icon component={icon} size={30} color={getColor('dark')} style={tw('mr-3')} />
-    <Text style={tw('py-2 text-lg text-dark')}>{label}</Text>
+    <Icon component={icon} size={30} color={color} style={tw('mr-3')} />
+    <Text style={{ ...tw('py-2 text-lg text-dark'), color }}>{label}</Text>
   </Pressable>
 }
 
