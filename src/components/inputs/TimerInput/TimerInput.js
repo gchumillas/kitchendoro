@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import { tw } from '~/src/libs/tailwind'
 import MenuIcon from '~/assets/icons/menu.svg'
-import PlayIcon from '~/assets/icons/play.svg'
+import AddIcon from '~/assets/icons/add.svg'
 import { Text } from '~/src/components/display'
 import { time2Seconds } from '~/src/libs/utils'
 import IconButton from '../IconButton'
@@ -25,7 +25,7 @@ const TimerInput = ({ value, onChange, onSubmit, style = undefined }) => {
         <Text style={{ ...tw('text-4xl'), fontFamily: 'RobotoMono_400Regular' }}>:</Text>
         <Input value={ss} onChange={ss => onChange({ ...value, ss })} />
       </View>
-      <IconButton icon={PlayIcon} onPress={onSubmit} disabled={seconds == 0} />
+      <IconButton icon={AddIcon} onPress={onSubmit} disabled={seconds == 0} />
     </View>
   </View>
 }
