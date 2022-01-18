@@ -41,7 +41,7 @@ export const createTimer = async ({ name, seconds }) => {
   const timers = await getTimers()
   const id = uuid.v1()
 
-  await saveTimers([...timers, { id, name, seconds, start: 0, running: false }])
+  await saveTimers([{ id, name, seconds, start: 0, running: false }, ...timers])
   return id
 }
 

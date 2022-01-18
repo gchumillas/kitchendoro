@@ -23,7 +23,7 @@ const HomePage = _ => {
 
   // the items includes the timers and also the 'timer input' to create new timers
   const items = React.useMemo(_ => {
-    return [...timers, { id: uuid.v1(), type: 'input' }]
+    return [{ id: uuid.v1(), type: 'input' }, ...timers]
   }, [JSON.stringify(timers)])
 
   const doRenameTimer = _ => {
@@ -65,7 +65,12 @@ const HomePage = _ => {
         keyboardShouldPersistTaps="handled"
         data={items}
         renderItem={({ item }) => item.type == 'input'
-          ? <TimerInput key={item.id} value={time} onChange={setTime} onSubmit={doCreateTimer} />
+          ? <TimerInput
+              key={item.id}
+              value={time}
+              onChange={setTime}
+              onSubmit={doCreateTimer}
+              style={tw('mb-6')} />
           : <Timer
               key={item.id}
               running={item.running}
