@@ -13,7 +13,7 @@ yarn
 # run in iOS
 yarn ios
 
-# alternatively you can your on Android
+# alternatively you can run it on Android
 yarn android
 ```
 
