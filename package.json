@@ -17,6 +17,7 @@
     "@gchumillas/schema-fixer": "^0.1.2",
     "expo": "~44.0.2",
     "expo-font": "^10.0.4",
+    "expo-notifications": "~0.14.0",
     "expo-secure-store": "~11.1.0",
     "expo-splash-screen": "~0.14.1",
     "expo-status-bar": "~1.2.0",
