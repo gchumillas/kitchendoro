@@ -15,7 +15,7 @@ const ModalDialog = ({ visible = false, onRequestClose = undefined, children }) 
 }
 
 const styles = StyleSheet.create({
-  wrapper: tw('flex h-full justify-center items-center bg-black bg-opacity-30 pt-4'),
+  wrapper: tw('flex h-full justify-center items-center bg-black bg-opacity-30'),
   box: {
     ...tw('bg-white p-5 rounded-md w-11/12'),
     marginTop: StatusBar.currentHeight
