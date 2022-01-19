@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, Platform, View, Button } from 'react-native'
+import { FlatList, Platform, Button } from 'react-native'
 import { Outlet, useNavigate } from 'react-router-native'
 import uuid from 'react-native-uuid'
 import { getColor, tw } from '~/src/libs/tailwind'
@@ -8,7 +8,6 @@ import PageLayout from '~/src/layouts/PageLayout'
 import ContextMenu, { ContextMenuItem } from '~/src/components/ContextMenu'
 import Timer from '~/src/components/Timer'
 import { TimerInput } from '~/src/components/inputs'
-import { Text } from '~/src/components/display'
 import { getTimers, createTimer, deleteTimer, updateTimer } from '~/src/providers/timers'
 import RenameIcon from '~/assets/icons/rename.svg'
 import DeleteIcon from '~/assets/icons/delete.svg'
@@ -63,7 +62,7 @@ async function schedulePushNotification () {
       body: 'Here is the notification body',
       data: { data: 'goes here' }
     },
-    trigger: { seconds: 10 }
+    trigger: { seconds: 3 }
   })
 }
 
@@ -113,32 +112,12 @@ const HomePage = _ => {
     reload()
   }, [])
 
-  const [notification, setNotification] = React.useState(false)
-
   React.useEffect(() => {
     registerForPushNotificationsAsync()
-
-    const notificationListener = Notifications.addNotificationReceivedListener(notification => {
-      setNotification(notification)
-    })
-
-    const responseListener = Notifications.addNotificationResponseReceivedListener(response => {
-      console.log(response)
-    })
-
-    return () => {
-      Notifications.removeNotificationSubscription(notificationListener)
-      Notifications.removeNotificationSubscription(responseListener)
-    }
   }, [])
 
   return <context.Provider value={React.useMemo(_ => ({ reload }), [])}>
     <PageLayout>
-      <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Title: {notification && notification.request.content.title} </Text>
-        <Text>Body: {notification && notification.request.content.body}</Text>
-        <Text>Data: {notification && JSON.stringify(notification.request.content.data)}</Text>
-      </View>
       <Button
         title="Press to schedule a notification"
         onPress={async () => {
