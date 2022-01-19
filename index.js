@@ -8,17 +8,6 @@ import { RobotoMono_400Regular, RobotoMono_700Bold } from '@expo-google-fonts/ro
 import HomePage from './src/pages/HomePage'
 import RenameTimerDialog from './src/pages/RenameTimerDialog'
 
-// TODO: prevent from sleeping
-const App = _ => {
-  return <NativeRouter>
-    <Routes>
-      <Route path="/" element={<HomePage />}>
-        <Route path="/rename-timer/:id" element={<RenameTimerDialog />} />
-      </Route>
-    </Routes>
-  </NativeRouter>
-}
-
 const Loading = _ => {
   // we can't use tailwind features since it's not yet ready
   return <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -27,13 +16,23 @@ const Loading = _ => {
   </View>
 }
 
-const AppLoader = _ => {
+// TODO: prevent from sleeping
+// TODO: (ios) No native splash screen registered for given view controller. Call 'SplashScreen.show' for given view controller first.
+const App = _ => {
   const [fontsLoaded] = useFonts({ RobotoMono_400Regular, RobotoMono_700Bold })
 
-  return fontsLoaded ? <App /> : <Loading />
+  return !fontsLoaded
+    ? <Loading />
+    : <NativeRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />}>
+          <Route path="/rename-timer/:id" element={<RenameTimerDialog />} />
+        </Route>
+      </Routes>
+    </NativeRouter>
 }
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in Expo Go or in a native build,
 // the environment is set up appropriately
-registerRootComponent(AppLoader)
+registerRootComponent(App)
