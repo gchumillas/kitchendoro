@@ -1,10 +1,9 @@
 import React from 'react'
-import { FlatList, Button } from 'react-native'
+import { FlatList } from 'react-native'
 import { Outlet, useNavigate } from 'react-router-native'
 import uuid from 'react-native-uuid'
 import { getColor, tw } from '~/src/libs/tailwind'
 import { time2Seconds } from '~/src/libs/utils'
-import { pushNotification } from '~/src/libs/notifications'
 import PageLayout from '~/src/layouts/PageLayout'
 import ContextMenu, { ContextMenuItem } from '~/src/components/ContextMenu'
 import Timer from '~/src/components/Timer'
@@ -62,11 +61,6 @@ const HomePage = _ => {
 
   return <context.Provider value={React.useMemo(_ => ({ reload }), [])}>
     <PageLayout>
-      <Button
-        title="Press to schedule a notification"
-        onPress={_ => pushNotification()}
-        style={tw('text-white')}
-      />
       <FlatList
         keyboardShouldPersistTaps="handled"
         data={items}
