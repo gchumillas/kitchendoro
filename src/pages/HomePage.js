@@ -24,23 +24,19 @@ Notifications.setNotificationHandler({
   })
 })
 
-async function registerForPushNotificationsAsync () {
-  let token
-  if (Device.isDevice) {
-    const { status: existingStatus } = await Notifications.getPermissionsAsync()
-    let finalStatus = existingStatus
-    if (existingStatus !== 'granted') {
-      const { status } = await Notifications.requestPermissionsAsync()
-      finalStatus = status
-    }
-    if (finalStatus !== 'granted') {
-      alert('Failed to get push token for push notification!')
-      return
-    }
-    token = (await Notifications.getExpoPushTokenAsync()).data
-    console.log(token)
-  } else {
-    alert('Must use physical device for Push Notifications')
+const requestPushNotifications = async _ => {
+  if (!Device.isDevice) {
+    throw new Error('Must use physical device for Push Notifications')
+  }
+
+  // gets or requests "push notifications" permissions
+  let status = (await Notifications.getPermissionsAsync()).status
+  if (status != 'granted') {
+    status = (await Notifications.requestPermissionsAsync()).status
+  }
+
+  if (status != 'granted') {
+    throw new Error('Failed to get push token for push notification!')
   }
 
   if (Platform.OS === 'android') {
@@ -51,8 +47,6 @@ async function registerForPushNotificationsAsync () {
       lightColor: '#FF231F7C'
     })
   }
-
-  return token
 }
 
 async function schedulePushNotification () {
@@ -65,6 +59,21 @@ async function schedulePushNotification () {
     trigger: { seconds: 3 }
   })
 }
+
+// const usePushNotifications = _ => {
+//   const [loading, setLoading] = React.useState(true)
+
+//   React.useEffect(_ => {
+//     const requestPushNotifications = async _ => {
+//       await registerForPushNotificationsAsync()
+//       setLoading(false)
+//     }
+
+//     requestPushNotifications()
+//   }, [])
+
+//   return { loading }
+// }
 
 const HomePage = _ => {
   const navigate = useNavigate()
@@ -113,7 +122,7 @@ const HomePage = _ => {
   }, [])
 
   React.useEffect(() => {
-    registerForPushNotificationsAsync()
+    requestPushNotifications()
   }, [])
 
   return <context.Provider value={React.useMemo(_ => ({ reload }), [])}>
