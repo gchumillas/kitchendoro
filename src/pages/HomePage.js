@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList } from 'react-native'
+import { FlatList, Platform, View, Button } from 'react-native'
 import { Outlet, useNavigate } from 'react-router-native'
 import uuid from 'react-native-uuid'
 import { getColor, tw } from '~/src/libs/tailwind'
@@ -8,10 +8,64 @@ import PageLayout from '~/src/layouts/PageLayout'
 import ContextMenu, { ContextMenuItem } from '~/src/components/ContextMenu'
 import Timer from '~/src/components/Timer'
 import { TimerInput } from '~/src/components/inputs'
+import { Text } from '~/src/components/display'
 import { getTimers, createTimer, deleteTimer, updateTimer } from '~/src/providers/timers'
 import RenameIcon from '~/assets/icons/rename.svg'
 import DeleteIcon from '~/assets/icons/delete.svg'
 import { context } from './context'
+
+import * as Notifications from 'expo-notifications'
+import * as Device from 'expo-device'
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false
+  })
+})
+
+async function registerForPushNotificationsAsync () {
+  let token
+  if (Device.isDevice) {
+    const { status: existingStatus } = await Notifications.getPermissionsAsync()
+    let finalStatus = existingStatus
+    if (existingStatus !== 'granted') {
+      const { status } = await Notifications.requestPermissionsAsync()
+      finalStatus = status
+    }
+    if (finalStatus !== 'granted') {
+      alert('Failed to get push token for push notification!')
+      return
+    }
+    token = (await Notifications.getExpoPushTokenAsync()).data
+    console.log(token)
+  } else {
+    alert('Must use physical device for Push Notifications')
+  }
+
+  if (Platform.OS === 'android') {
+    Notifications.setNotificationChannelAsync('default', {
+      name: 'default',
+      importance: Notifications.AndroidImportance.MAX,
+      vibrationPattern: [0, 250, 250, 250],
+      lightColor: '#FF231F7C'
+    })
+  }
+
+  return token
+}
+
+async function schedulePushNotification () {
+  await Notifications.scheduleNotificationAsync({
+    content: {
+      title: "You've got mail! 📬",
+      body: 'Here is the notification body',
+      data: { data: 'goes here' }
+    },
+    trigger: { seconds: 10 }
+  })
+}
 
 const HomePage = _ => {
   const navigate = useNavigate()
@@ -59,8 +113,39 @@ const HomePage = _ => {
     reload()
   }, [])
 
+  const [notification, setNotification] = React.useState(false)
+
+  React.useEffect(() => {
+    registerForPushNotificationsAsync()
+
+    const notificationListener = Notifications.addNotificationReceivedListener(notification => {
+      setNotification(notification)
+    })
+
+    const responseListener = Notifications.addNotificationResponseReceivedListener(response => {
+      console.log(response)
+    })
+
+    return () => {
+      Notifications.removeNotificationSubscription(notificationListener)
+      Notifications.removeNotificationSubscription(responseListener)
+    }
+  }, [])
+
   return <context.Provider value={React.useMemo(_ => ({ reload }), [])}>
     <PageLayout>
+      <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Title: {notification && notification.request.content.title} </Text>
+        <Text>Body: {notification && notification.request.content.body}</Text>
+        <Text>Data: {notification && JSON.stringify(notification.request.content.data)}</Text>
+      </View>
+      <Button
+        title="Press to schedule a notification"
+        onPress={async () => {
+          await schedulePushNotification()
+        }}
+        style={tw('text-white')}
+      />
       <FlatList
         keyboardShouldPersistTaps="handled"
         data={items}
