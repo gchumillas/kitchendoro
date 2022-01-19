@@ -16,6 +16,7 @@
     "@expo-google-fonts/roboto-mono": "^0.2.0",
     "@gchumillas/schema-fixer": "^0.1.2",
     "expo": "~44.0.2",
+    "expo-device": "~4.1.0",
     "expo-font": "^10.0.4",
     "expo-notifications": "~0.14.0",
     "expo-secure-store": "~11.1.0",
