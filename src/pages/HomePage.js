@@ -1,9 +1,10 @@
 import React from 'react'
-import { FlatList, Platform, Button } from 'react-native'
+import { FlatList, Button } from 'react-native'
 import { Outlet, useNavigate } from 'react-router-native'
 import uuid from 'react-native-uuid'
 import { getColor, tw } from '~/src/libs/tailwind'
 import { time2Seconds } from '~/src/libs/utils'
+import { pushNotification } from '~/src/libs/notifications'
 import PageLayout from '~/src/layouts/PageLayout'
 import ContextMenu, { ContextMenuItem } from '~/src/components/ContextMenu'
 import Timer from '~/src/components/Timer'
@@ -12,68 +13,6 @@ import { getTimers, createTimer, deleteTimer, updateTimer } from '~/src/provider
 import RenameIcon from '~/assets/icons/rename.svg'
 import DeleteIcon from '~/assets/icons/delete.svg'
 import { context } from './context'
-
-import * as Notifications from 'expo-notifications'
-import * as Device from 'expo-device'
-
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: false,
-    shouldSetBadge: false
-  })
-})
-
-const requestPushNotifications = async _ => {
-  if (!Device.isDevice) {
-    throw new Error('Must use physical device for Push Notifications')
-  }
-
-  // gets or requests "push notifications" permissions
-  let status = (await Notifications.getPermissionsAsync()).status
-  if (status != 'granted') {
-    status = (await Notifications.requestPermissionsAsync()).status
-  }
-
-  if (status != 'granted') {
-    throw new Error('Failed to get push token for push notification!')
-  }
-
-  if (Platform.OS === 'android') {
-    Notifications.setNotificationChannelAsync('default', {
-      name: 'default',
-      importance: Notifications.AndroidImportance.MAX,
-      vibrationPattern: [0, 250, 250, 250],
-      lightColor: '#FF231F7C'
-    })
-  }
-}
-
-async function schedulePushNotification () {
-  await Notifications.scheduleNotificationAsync({
-    content: {
-      title: "You've got mail! 📬",
-      body: 'Here is the notification body',
-      data: { data: 'goes here' }
-    },
-    trigger: { seconds: 3 }
-  })
-}
-
-// const usePushNotifications = _ => {
-//   const [loading, setLoading] = React.useState(true)
-
-//   React.useEffect(_ => {
-//     const requestPushNotifications = async _ => {
-//       await registerForPushNotificationsAsync()
-//       setLoading(false)
-//     }
-
-//     requestPushNotifications()
-//   }, [])
-
-//   return { loading }
-// }
 
 const HomePage = _ => {
   const navigate = useNavigate()
@@ -121,17 +60,11 @@ const HomePage = _ => {
     reload()
   }, [])
 
-  React.useEffect(() => {
-    requestPushNotifications()
-  }, [])
-
   return <context.Provider value={React.useMemo(_ => ({ reload }), [])}>
     <PageLayout>
       <Button
         title="Press to schedule a notification"
-        onPress={async () => {
-          await schedulePushNotification()
-        }}
+        onPress={_ => pushNotification()}
         style={tw('text-white')}
       />
       <FlatList

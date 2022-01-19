@@ -4,9 +4,19 @@ import { NativeRouter, Routes, Route } from 'react-router-native'
 import { registerRootComponent } from 'expo'
 import { StatusBar } from 'expo-status-bar'
 import { useFonts } from 'expo-font'
+import * as Notifications from 'expo-notifications'
 import { RobotoMono_400Regular, RobotoMono_700Bold } from '@expo-google-fonts/roboto-mono'
+import { requestPushNotifications } from './src/libs/notifications'
 import HomePage from './src/pages/HomePage'
 import RenameTimerDialog from './src/pages/RenameTimerDialog'
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false
+  })
+})
 
 const Loading = _ => {
   // we can't use tailwind features since it's not yet ready
@@ -20,6 +30,10 @@ const Loading = _ => {
 // TODO: (ios) No native splash screen registered for given view controller. Call 'SplashScreen.show' for given view controller first.
 const App = _ => {
   const [fontsLoaded] = useFonts({ RobotoMono_400Regular, RobotoMono_700Bold })
+
+  React.useEffect(_ => {
+    requestPushNotifications()
+  }, [])
 
   return !fontsLoaded
     ? <Loading />
