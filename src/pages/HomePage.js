@@ -43,7 +43,7 @@ const HomePage = _ => {
   }
 
   const doStopTimer = async timerId => {
-    await updateTimer(timerId, { running: false, startFrom: false })
+    await updateTimer(timerId, { running: false })
     reload()
   }
 
