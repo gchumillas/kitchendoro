@@ -4,11 +4,12 @@ import { Outlet, useNavigate } from 'react-router-native'
 import uuid from 'react-native-uuid'
 import { getColor, tw } from '~/src/libs/tailwind'
 import { time2Seconds } from '~/src/libs/utils'
+import { pushNotification } from '~/src/libs/notifications'
 import PageLayout from '~/src/layouts/PageLayout'
 import ContextMenu, { ContextMenuItem } from '~/src/components/ContextMenu'
 import Timer from '~/src/components/Timer'
 import { TimerInput } from '~/src/components/inputs'
-import { getTimers, createTimer, deleteTimer, updateTimer } from '~/src/providers/timers'
+import { getTimers, createTimer, deleteTimer, updateTimer, readTimer } from '~/src/providers/timers'
 import RenameIcon from '~/assets/icons/rename.svg'
 import DeleteIcon from '~/assets/icons/delete.svg'
 import { context } from './context'
@@ -38,7 +39,9 @@ const HomePage = _ => {
   }
 
   const doStartTimer = async timerId => {
+    const { seconds } = await readTimer(timerId)
     await updateTimer(timerId, { running: true, startFrom: Date.now() })
+    await pushNotification({ seconds })
     reload()
   }
 
