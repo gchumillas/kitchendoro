@@ -7,3 +7,4 @@
 7. TODO: Android version
 8. TODO: Test application
 9. TODO: Debug application (simulator and phisical device)
+10. TODO: no native splash screen
