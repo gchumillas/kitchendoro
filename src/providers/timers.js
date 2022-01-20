@@ -10,7 +10,8 @@ const fixTimers = timers => fix(
       name: 'string',
       seconds: 'number',
       startFrom: 'number', // UNIX time in milliseconds
-      running: 'boolean'
+      running: 'boolean',
+      notificationId: 'string'
     }
   })
 )
@@ -47,7 +48,7 @@ export const createTimer = async ({ name, seconds }) => {
 
 /**
  * @param {string} id
- * @returns {Promise<{ id: string, name: string, seconds: number }>}
+ * @returns {Promise<{ id: string, name: string, seconds: number, startFrom: number, running: boolean, notificationId: string }>}
  */
 export const readTimer = async id => {
   const timers = await getTimers()
@@ -58,7 +59,7 @@ export const readTimer = async id => {
 /**
  *
  * @param {string} id
- * @param {{ name?: string, seconds?: number, startFrom?: number, running?:  boolean }} timer
+ * @param {{ name?: string, seconds?: number, startFrom?: number, running?:  boolean, notificationId?: string }} timer
  */
 export const updateTimer = async (id, timer) => {
   const timers = await getTimers()

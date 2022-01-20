@@ -34,3 +34,5 @@ export const pushNotification = ({ seconds }) => Notifications.scheduleNotificat
   },
   trigger: { seconds }
 })
+
+export const cancelNotification = notificationId => Notifications.cancelScheduledNotificationAsync(notificationId)
