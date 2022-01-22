@@ -6,6 +6,7 @@
   "home": {
     "new timer": "New Timer",
     "rename": "Rename",
-    "delete": "Delete"
+    "delete": "Delete",
+    "ready": "{{name}} is ready!"
   }
 }

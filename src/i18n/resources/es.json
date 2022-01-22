@@ -6,6 +6,7 @@
   "home": {
     "new timer": "Nuevo Temporizador",
     "rename": "Renombrar",
-    "delete": "Borrar"
+    "delete": "Borrar",
+    "ready": "¡{{name}} está listo!"
   }
 }
