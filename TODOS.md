@@ -8,3 +8,4 @@
 9. TODO: Debug application (simulator and phisical device)
 10. TODO: no native splash screen
 11. TODO: group notifications
+12. TODO: look into notification badges
