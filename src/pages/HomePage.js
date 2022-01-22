@@ -41,8 +41,8 @@ const HomePage = _ => {
   }
 
   const doStartTimer = async timerId => {
-    const { seconds } = await readTimer(timerId)
-    const notificationId = await pushNotification({ seconds })
+    const { seconds, name } = await readTimer(timerId)
+    const notificationId = await pushNotification({ seconds, title: t('ready', { name }) })
     await updateTimer(timerId, { running: true, startFrom: Date.now(), notificationId })
     reload()
   }

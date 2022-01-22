@@ -26,12 +26,8 @@ export const requestPushNotifications = async _ => {
   }
 }
 
-export const pushNotification = ({ seconds }) => Notifications.scheduleNotificationAsync({
-  content: {
-    title: "You've got mail! 📬",
-    body: 'Here is the notification body',
-    data: { data: 'goes here' }
-  },
+export const pushNotification = ({ seconds, title }) => Notifications.scheduleNotificationAsync({
+  content: { title },
   trigger: { seconds }
 })
 
