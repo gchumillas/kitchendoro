@@ -1,0 +1,11 @@
+{
+  "common": {
+    "close": "Cerrar",
+    "save": "Guardar"
+  },
+  "home": {
+    "new timer": "Nuevo Temporizador",
+    "rename": "Renombrar",
+    "delete": "Borrar"
+  }
+}

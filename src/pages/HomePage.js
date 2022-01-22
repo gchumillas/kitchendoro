@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { FlatList } from 'react-native'
 import { Outlet, useNavigate } from 'react-router-native'
 import uuid from 'react-native-uuid'
@@ -15,6 +16,7 @@ import DeleteIcon from '~/assets/icons/delete.svg'
 import { context } from './context'
 
 const HomePage = _ => {
+  const { t } = useTranslation('home')
   const navigate = useNavigate()
   const [time, setTime] = React.useState({ hh: '', mm: '', ss: '' })
   const [timers, setTimers] = React.useState([])
@@ -56,7 +58,7 @@ const HomePage = _ => {
     const seconds = time2Seconds(time)
 
     setTime({ hh: '', mm: '', ss: '' })
-    await createTimer({ name: 'New Timer', seconds })
+    await createTimer({ name: t`new timer`, seconds })
     reload()
   }
 
@@ -72,6 +74,7 @@ const HomePage = _ => {
         renderItem={({ item }) => item.type == 'input'
           ? <TimerInput
               key={item.id}
+              label={t`new timer`}
               value={time}
               onChange={setTime}
               onSubmit={doCreateTimer}
@@ -89,8 +92,8 @@ const HomePage = _ => {
         keyExtractor={item => item.id}
         style={tw('w-full px-5 pt-5')} />
       <ContextMenu visible={!!selectedTimerId} onRequestClose={doCloseDialog}>
-        <ContextMenuItem icon={RenameIcon} label="Rename" onPress={doRenameTimer} />
-        <ContextMenuItem icon={DeleteIcon} label="Delete" onPress={doDeleteTimer} color={getColor('red-800')} />
+        <ContextMenuItem icon={RenameIcon} label={t`rename`} onPress={doRenameTimer} />
+        <ContextMenuItem icon={DeleteIcon} label={t`delete`} onPress={doDeleteTimer} color={getColor('red-800')} />
       </ContextMenu>
     </PageLayout>
     <Outlet />

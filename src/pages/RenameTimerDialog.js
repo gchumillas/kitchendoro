@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router-native'
 import { Button, TextField } from '~/src/components/inputs'
 import { updateTimer, readTimer } from '~/src/providers/timers'
@@ -6,6 +7,7 @@ import DialogLayout from '~/src/layouts/DialogLayout'
 import { context } from './context'
 
 const RenameDialog = _ => {
+  const { t } = useTranslation()
   const { reload } = React.useContext(context)
   const navigate = useNavigate()
   const { id } = useParams()
@@ -30,8 +32,8 @@ const RenameDialog = _ => {
   return <DialogLayout
     onRequestClose={doClose}
     actions={<>
-      <Button title="Close" onPress={doClose} />
-      <Button title="Save" primary disabled={!name} onPress={doSave} />
+      <Button title={t`close`} onPress={doClose} />
+      <Button title={t`save`} primary disabled={!name} onPress={doSave} />
     </>}>
     <TextField autoFocus value={name} onChange={setName} />
   </DialogLayout>
