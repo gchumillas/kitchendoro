@@ -1,5 +1,4 @@
 1. TODO: review app.json
-2. TODO: add i18n support
 3. TODO: app icon
 4. TODO: notifications
 5. TODO: notification sounds
