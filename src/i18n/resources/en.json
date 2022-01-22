@@ -1,0 +1,11 @@
+{
+  "common": {
+    "close": "Close",
+    "save": "Save"
+  },
+  "home": {
+    "new timer": "New Timer",
+    "rename": "Rename",
+    "delete": "Delete"
+  }
+}

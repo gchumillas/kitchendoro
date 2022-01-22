@@ -8,13 +8,13 @@ import { time2Seconds } from '~/src/libs/utils'
 import IconButton from '../IconButton'
 import Input from './Input'
 
-const TimerInput = ({ value, onChange, onSubmit, style = undefined }) => {
+const TimerInput = ({ label, value, onChange, onSubmit, style = undefined }) => {
   const { hh, mm, ss } = value
   const seconds = React.useMemo(_ => time2Seconds(value), [JSON.stringify(value)])
 
   return <View style={[tw('border-2 rounded-md border-light px-2 pb-5'), style]}>
     <View style={tw('h-6 flex justify-center items-center')}>
-      <Text>New Timer</Text>
+      <Text>{label}</Text>
     </View>
     <View style={tw('flex flex-row items-center justify-between')}>
       <IconButton icon={MenuIcon} disabled />

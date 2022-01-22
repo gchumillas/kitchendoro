@@ -9,6 +9,7 @@ import { RobotoMono_400Regular, RobotoMono_700Bold } from '@expo-google-fonts/ro
 import { requestPushNotifications } from './src/libs/notifications'
 import HomePage from './src/pages/HomePage'
 import RenameTimerDialog from './src/pages/RenameTimerDialog'
+import './src/i18n'
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -32,7 +33,9 @@ const App = _ => {
   const [fontsLoaded] = useFonts({ RobotoMono_400Regular, RobotoMono_700Bold })
 
   React.useEffect(_ => {
-    requestPushNotifications()
+    requestPushNotifications().catch(err => {
+      console.error('Notifications: ', err?.message || `${err}`)
+    })
   }, [])
 
   return !fontsLoaded
