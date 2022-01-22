@@ -36,6 +36,14 @@ const App = _ => {
     requestPushNotifications().catch(err => {
       console.error('Notifications: ', err?.message || `${err}`)
     })
+
+    const responseListener = Notifications.addNotificationResponseReceivedListener(res => {
+      Notifications.dismissAllNotificationsAsync()
+    })
+
+    return _ => {
+      responseListener.remove()
+    }
   }, [])
 
   return !fontsLoaded
