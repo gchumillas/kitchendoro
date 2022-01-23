@@ -58,10 +58,10 @@ const styles = StyleSheet.create({
     ...tw('text-4xl mt-1'),
     fontFamily: 'RobotoMono_400Regular'
   },
-  textInTime: tw('text-green-300'),
-  textOverTime: tw('text-red-300'),
-  inTime: tw('border-green-300 border-opacity-50'),
-  overTime: tw('border-red-300 border-opacity-50')
+  textInTime: tw('text-green-0'),
+  textOverTime: tw('text-red-0'),
+  inTime: tw('border-green-0 border-opacity-50'),
+  overTime: tw('border-red-0 border-opacity-50')
 })
 
 export default Timer
