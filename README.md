@@ -21,7 +21,5 @@ yarn android
 
 ```bash
 # generates tailwind.json based on tailwind.config.js
-npx create-tailwind-rn
-cp styles.json tailwind.json
-rm styles.json
+npx create-tailwind-rn && cp styles.json tailwind.json && rm styles.json
 ```
