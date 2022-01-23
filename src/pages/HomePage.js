@@ -78,7 +78,7 @@ const HomePage = _ => {
               value={time}
               onChange={setTime}
               onSubmit={doCreateTimer}
-              style={tw('mb-6')} />
+              style={tw('mb-5')} />
           : <Timer
               key={item.id}
               running={item.running}
@@ -88,7 +88,7 @@ const HomePage = _ => {
               onStart={_ => doStartTimer(item.id)}
               onStop={_ => doStopTimer(item.id)}
               onSelect={_ => setSelectedTimerId(item.id)}
-              style={tw('mb-6')} />}
+              style={tw('mb-5')} />}
         keyExtractor={item => item.id}
         style={tw('w-full px-5 pt-5')} />
       <ContextMenu visible={!!selectedTimerId} onRequestClose={doCloseDialog}>
