@@ -4,3 +4,4 @@
 8. TODO: Test application (testflight)
 9. TODO: Debug application (simulator and phisical device)
 10. TODO: no native splash screen
+11. TODO: keep screen awake
