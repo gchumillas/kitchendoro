@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
   },
   textInTime: tw('text-green-300'),
   textOverTime: tw('text-red-300'),
-  inTime: tw('border-green-300 border-opacity-40'),
-  overTime: tw('border-red-300')
+  inTime: tw('border-green-300 border-opacity-50'),
+  overTime: tw('border-red-300 border-opacity-50')
 })
 
 export default Timer
