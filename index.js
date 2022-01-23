@@ -8,6 +8,7 @@ import { registerRootComponent } from 'expo'
 import { StatusBar } from 'expo-status-bar'
 import { useFonts } from 'expo-font'
 import * as Notifications from 'expo-notifications'
+import * as ScreenOrientation from 'expo-screen-orientation'
 import { RobotoMono_400Regular, RobotoMono_700Bold } from '@expo-google-fonts/roboto-mono'
 import { requestPushNotifications } from './src/libs/notifications'
 import HomePage from './src/pages/HomePage'
@@ -36,6 +37,7 @@ const App = _ => {
   const [fontsLoaded] = useFonts({ RobotoMono_400Regular, RobotoMono_700Bold })
 
   React.useEffect(_ => {
+    ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT)
     requestPushNotifications()
 
     const responseListener = Notifications.addNotificationResponseReceivedListener(res => {
