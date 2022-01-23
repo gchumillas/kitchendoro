@@ -1,6 +1,4 @@
 // TODO: make Android version
-// TODO: keep screen awake
-// TODO: only portrait mode
 import React from 'react'
 import { View, ActivityIndicator } from 'react-native'
 import { NativeRouter, Routes, Route } from 'react-router-native'

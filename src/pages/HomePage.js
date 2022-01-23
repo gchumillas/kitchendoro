@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { FlatList } from 'react-native'
 import { Outlet, useNavigate } from 'react-router-native'
 import uuid from 'react-native-uuid'
+import { useKeepAwake } from 'expo-keep-awake'
 import { getColor, tw } from '~/src/libs/tailwind'
 import { time2Seconds } from '~/src/libs/utils'
 import { pushNotification, cancelNotification } from '~/src/libs/notifications'
@@ -16,6 +17,7 @@ import DeleteIcon from '~/assets/icons/delete.svg'
 import { context } from './context'
 
 const HomePage = _ => {
+  useKeepAwake()
   const { t } = useTranslation('home')
   const navigate = useNavigate()
   const [time, setTime] = React.useState({ hh: '', mm: '', ss: '' })
