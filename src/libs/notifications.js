@@ -33,15 +33,12 @@ export const requestPushNotifications = async _ => {
   }
 }
 
-export const pushNotification = ({ seconds, title }) => {
-  console.log('aaa')
-  return Notifications.scheduleNotificationAsync({
-    content: {
-      title,
-      sound: true
-    },
-    trigger: { seconds }
-  })
-}
+export const pushNotification = ({ seconds, title }) => Notifications.scheduleNotificationAsync({
+  content: {
+    title,
+    sound: true
+  },
+  trigger: { seconds }
+})
 
 export const cancelNotification = notificationId => Notifications.cancelScheduledNotificationAsync(notificationId)
