@@ -3476,6 +3476,13 @@ expo-notifications@~0.14.0:
     unimodules-task-manager-interface "~7.1.0"
     uuid "^3.4.0"
 
+expo-screen-orientation@~4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/expo-screen-orientation/-/expo-screen-orientation-4.1.1.tgz#f61c241da8266baeb6e7e2c3427b5ca97e0c889b"
+  integrity sha512-qfJzgJ78wyG+BBVv5gdmAA6PUOY8FM++PFb0osAcAn2v4qSlz0V8rBCBpeBvFXc3fIhzspoGZdpEsnGtlqFQ5g==
+  dependencies:
+    "@expo/config-plugins" "^4.0.2"
+
 expo-secure-store@~11.1.0:
   version "11.1.0"
   resolved "https://registry.yarnpkg.com/expo-secure-store/-/expo-secure-store-11.1.0.tgz#2eb6e793a459e178feeb72bbeb40afc97e412bf6"
