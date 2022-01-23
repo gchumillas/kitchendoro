@@ -1,7 +1,7 @@
 import React from 'react'
 import { Pressable, StyleSheet } from 'react-native'
 import cn from 'react-native-classnames'
-import { Text } from '~/src/components/display'
+import Text from '~/src/components/display/Text'
 import { tw } from '~/src/libs/tailwind'
 
 const Component = ({ title, primary = false, disabled = false, ...props }) => {

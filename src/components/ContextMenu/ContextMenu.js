@@ -1,5 +1,5 @@
 import React from 'react'
-import { ModalDialog } from '~/src/components/utils'
+import ModalDialog from '~/src/components/utils/ModalDialog'
 
 const ContextMenu = ({ visible, onRequestClose, children }) => {
   return <ModalDialog visible={visible} onRequestClose={onRequestClose}>

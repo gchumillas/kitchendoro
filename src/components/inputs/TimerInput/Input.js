@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, TextInput } from 'react-native'
 import { tw } from '~/src/libs/tailwind'
-import { Text } from '~/src/components/display'
+import Text from '~/src/components/display/Text'
 
 const Input = ({ value, onChange }) => {
   const inputRef = React.createRef()

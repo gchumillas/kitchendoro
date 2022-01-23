@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { tw } from '~/src/libs/tailwind'
-import { ModalDialog } from '~/src/components/utils'
+import ModalDialog from '~/src/components/utils/ModalDialog'
 
 const Component = ({ actions, children, ...modalDialogProps }) => {
   return <ModalDialog {...modalDialogProps} visible>
