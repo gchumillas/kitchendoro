@@ -9,7 +9,12 @@ export const requestPushNotifications = async _ => {
 
   let status = (await Notifications.getPermissionsAsync()).status
   if (status != 'granted') {
-    status = (await Notifications.requestPermissionsAsync()).status
+    status = (await Notifications.requestPermissionsAsync({
+      ios: {
+        allowAlert: true,
+        allowSound: true
+      }
+    })).status
   }
 
   if (status != 'granted') {
@@ -26,9 +31,15 @@ export const requestPushNotifications = async _ => {
   }
 }
 
-export const pushNotification = ({ seconds, title }) => Notifications.scheduleNotificationAsync({
-  content: { title },
-  trigger: { seconds }
-})
+export const pushNotification = ({ seconds, title }) => {
+  console.log('aaa')
+  return Notifications.scheduleNotificationAsync({
+    content: {
+      title,
+      sound: true
+    },
+    trigger: { seconds }
+  })
+}
 
 export const cancelNotification = notificationId => Notifications.cancelScheduledNotificationAsync(notificationId)
