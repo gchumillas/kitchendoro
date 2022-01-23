@@ -6,7 +6,7 @@ import MenuIcon from '~/assets/icons/menu.svg'
 import PlayIcon from '~/assets/icons/play.svg'
 import StopIcon from '~/assets/icons/stop.svg'
 import { useCountdown } from '~/src/hooks/timer'
-import { IconButton } from '~/src/components/inputs'
+import IconButton from '~/src/components/inputs/IconButton'
 import ProgressBar from './ProgressBar'
 import Text from './Text'
 
