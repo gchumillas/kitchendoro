@@ -3,6 +3,7 @@
     "name": "Multi Timer",
     "slug": "multi-timer",
     "version": "1.0.0",
+    "orientation": "portrait",
     "assetBundlePatterns": [
       "**/*"
     ],
