@@ -34,7 +34,7 @@ const Timer = ({ running, startFrom, seconds, name, onStart, onStop, onSelect, s
   }, [countdown])
 
   return <View style={[cn(styles, 'container', { inTime, overTime }), style]}>
-    <View style={tw('h-6 flex justify-center items-center')}>
+    <View style={tw('pt-3 pb-2 flex justify-center items-center')}>
       <Text style={cn(styles, { textInTime: inTime, textOverTime: overTime })}>{name}</Text>
     </View>
     <View style={tw('flex flex-row items-center justify-between')}>
@@ -46,21 +46,21 @@ const Timer = ({ running, startFrom, seconds, name, onStart, onStop, onSelect, s
         ? <IconButton icon={StopIcon} onPress={onStop} color={color} />
         : <IconButton icon={PlayIcon} onPress={onStart} color={color} />}
     </View>
-    <View style={tw('h-6 flex justify-center')}>
+    <View style={tw('py-3 flex justify-center')}>
       <ProgressBar value={Math.max(0, countdown) / seconds} color={color} />
     </View>
   </View>
 }
 
 const styles = StyleSheet.create({
-  container: tw('border-2 rounded-md border-light px-2'),
+  container: tw('border-2 rounded-md border-light border-opacity-30 px-2'),
   text: {
     ...tw('text-4xl mt-1'),
     fontFamily: 'RobotoMono_400Regular'
   },
   textInTime: tw('text-green-300'),
   textOverTime: tw('text-red-300'),
-  inTime: tw('border-green-300'),
+  inTime: tw('border-green-300 border-opacity-40'),
   overTime: tw('border-red-300')
 })
 

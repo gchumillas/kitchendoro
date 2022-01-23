@@ -12,8 +12,8 @@ const TimerInput = ({ label, value, onChange, onSubmit, style = undefined }) => 
   const { hh, mm, ss } = value
   const seconds = React.useMemo(_ => time2Seconds(value), [JSON.stringify(value)])
 
-  return <View style={[tw('border-2 rounded-md border-light px-2 pb-5'), style]}>
-    <View style={tw('h-6 flex justify-center items-center')}>
+  return <View style={[tw('border-2 rounded-md border-light border-opacity-30 px-2 pb-5'), style]}>
+    <View style={tw('pt-3 pb-2 flex justify-center items-center')}>
       <Text>{label}</Text>
     </View>
     <View style={tw('flex flex-row items-center justify-between')}>
