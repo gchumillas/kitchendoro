@@ -4,7 +4,8 @@ import * as Device from 'expo-device'
 
 export const requestPushNotifications = async _ => {
   if (!Device.isDevice) {
-    throw new Error('Must use physical device for Push Notifications')
+    console.warn('Must use physical device for Push Notifications')
+    return
   }
 
   let status = (await Notifications.getPermissionsAsync()).status
@@ -18,7 +19,8 @@ export const requestPushNotifications = async _ => {
   }
 
   if (status != 'granted') {
-    throw new Error('Failed to get push token for push notification!')
+    console.warn('Failed to get push token for push notification!')
+    return
   }
 
   if (Platform.OS === 'android') {

@@ -33,9 +33,7 @@ const App = _ => {
   const [fontsLoaded] = useFonts({ RobotoMono_400Regular, RobotoMono_700Bold })
 
   React.useEffect(_ => {
-    requestPushNotifications().catch(err => {
-      console.error('Notifications: ', err?.message || `${err}`)
-    })
+    requestPushNotifications()
 
     const responseListener = Notifications.addNotificationResponseReceivedListener(res => {
       Notifications.dismissAllNotificationsAsync()
