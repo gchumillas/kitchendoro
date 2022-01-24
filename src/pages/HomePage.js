@@ -93,11 +93,11 @@ const HomePage = _ => {
               style={tw('mb-5')} />}
         keyExtractor={item => item.id}
         style={tw('w-full px-5 pt-5')} />
-      <ContextMenu visible={!!selectedTimerId} onRequestClose={doCloseDialog}>
-        <ContextMenuItem icon={RenameIcon} label={t`rename`} onPress={doRenameTimer} />
-        <ContextMenuItem icon={DeleteIcon} label={t`delete`} onPress={doDeleteTimer} color={getColor('red-800')} />
-      </ContextMenu>
     </PageLayout>
+    <ContextMenu visible={!!selectedTimerId} onRequestClose={doCloseDialog}>
+      <ContextMenuItem icon={RenameIcon} label={t`rename`} onPress={doRenameTimer} />
+      <ContextMenuItem icon={DeleteIcon} label={t`delete`} onPress={doDeleteTimer} color={getColor('red-800')} />
+    </ContextMenu>
     <Outlet />
   </context.Provider>
 }
