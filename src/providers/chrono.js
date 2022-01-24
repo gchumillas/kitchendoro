@@ -17,10 +17,7 @@ export const getChrono = async _ => {
   try {
     return fixChrono(JSON.parse(await ss.getItemAsync('chrono')))
   } catch (err) {
-    return {
-      startFrom: 0,
-      running: false
-    }
+    return null
   }
 }
 
