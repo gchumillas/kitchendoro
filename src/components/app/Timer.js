@@ -7,8 +7,8 @@ import PlayIcon from '~/assets/icons/play.svg'
 import StopIcon from '~/assets/icons/stop.svg'
 import { useCountdown } from '~/src/hooks/timer'
 import IconButton from '~/src/components/inputs/IconButton'
-import ProgressBar from './ProgressBar'
-import Text from './Text'
+import ProgressBar from '~/src/components/display/ProgressBar'
+import Text from '~/src/components/display/Text'
 
 const maxSeconds = 99 * 3600 + 59 * 60 + 60
 
