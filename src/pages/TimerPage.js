@@ -10,12 +10,12 @@ import { pushNotification, cancelNotification } from '~/src/libs/notifications'
 import PageLayout from '~/src/layouts/PageLayout'
 import ContextMenu, { ContextMenuItem } from '~/src/components/app/ContextMenu'
 import TimerInput from '~/src/components/app/TimerInput'
+import { context } from '~/src/components/app/context'
 import Timer from '~/src/components/app/Timer'
 import Footer from '~/src/components/app/Footer'
 import { getTimers, createTimer, deleteTimer, updateTimer, readTimer } from '~/src/providers/timers'
 import RenameIcon from '~/assets/icons/rename.svg'
 import DeleteIcon from '~/assets/icons/delete.svg'
-import { context } from './context'
 
 const TimerPage = _ => {
   useKeepAwake()

@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router-native'
 import Button from '~/src/components/inputs/Button'
 import TextField from '~/src/components/inputs/TextField'
+import { context } from '../components/app/context'
 import { updateTimer, readTimer } from '~/src/providers/timers'
 import DialogLayout from '~/src/layouts/DialogLayout'
-import { context } from './context'
 
 const RenameDialog = _ => {
   const { t } = useTranslation()
