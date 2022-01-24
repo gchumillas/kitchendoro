@@ -29,6 +29,10 @@ const ChronoPage = _ => {
     reload()
   }
 
+  React.useEffect(_ => {
+    reload()
+  })
+
   return <PageLayout footer={<Footer />}>
     <View style={tw('flex h-full items-center justify-center')}>
       <View style={tw('')}>
