@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native'
 import { tw } from '~/src/libs/tailwind'
 import ModalDialog from '~/src/components/utils/ModalDialog'
 
-const Component = ({ actions, children, ...modalDialogProps }) => {
+const DialogLayout = ({ actions, children, ...modalDialogProps }) => {
   return <ModalDialog {...modalDialogProps} visible>
     <View style={styles.body}>
       {children}
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
   footer: tw('flex flex-row items-center justify-around')
 })
 
-export default Component
+export default DialogLayout

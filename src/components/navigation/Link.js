@@ -1,8 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-native'
+import { Link as RNLink } from 'react-router-native'
 
-const Component = linkProps => {
-  return <Link underlayColor="transparent" {...linkProps}></Link>
+const Link = linkProps => {
+  return <RNLink underlayColor="transparent" {...linkProps}></RNLink>
 }
 
-export default Component
+export default Link
