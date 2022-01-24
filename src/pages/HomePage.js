@@ -11,6 +11,7 @@ import PageLayout from '~/src/layouts/PageLayout'
 import ContextMenu, { ContextMenuItem } from '~/src/components/ContextMenu'
 import Timer from '~/src/components/display/Timer'
 import TimerInput from '~/src/components/inputs/TimerInput'
+import Footer from '~/src/components/app/Footer'
 import { getTimers, createTimer, deleteTimer, updateTimer, readTimer } from '~/src/providers/timers'
 import RenameIcon from '~/assets/icons/rename.svg'
 import DeleteIcon from '~/assets/icons/delete.svg'
@@ -93,6 +94,7 @@ const HomePage = _ => {
               style={tw('mb-5')} />}
         keyExtractor={item => item.id}
         style={tw('w-full px-5 pt-5')} />
+      <Footer />
     </PageLayout>
     <ContextMenu visible={!!selectedTimerId} onRequestClose={doCloseDialog}>
       <ContextMenuItem icon={RenameIcon} label={t`rename`} onPress={doRenameTimer} />
