@@ -7141,6 +7141,9 @@
 		"fontSize": 36,
 		"lineHeight": 40
 	},
+	"text-6xl": {
+		"fontSize": 60
+	},
 	"font-thin": {
 		"fontWeight": "100"
 	},
