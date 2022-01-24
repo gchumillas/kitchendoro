@@ -15,7 +15,6 @@ const saveChrono = async chrono => {
  */
 export const getChrono = async _ => {
   try {
-    console.log(await ss.getItemAsync('chrono'))
     return fixChrono(JSON.parse(await ss.getItemAsync('chrono')))
   } catch (err) {
     return {
