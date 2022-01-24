@@ -13,12 +13,12 @@ const RenameDialog = _ => {
   const navigate = useNavigate()
   const { id } = useParams()
   const [name, setName] = React.useState('')
-  const doClose = _ => navigate('/')
+  const doClose = _ => navigate('/timer')
 
   const doSave = async _ => {
     await updateTimer(id, { name })
     reload()
-    navigate('/')
+    navigate('/timer')
   }
 
   React.useEffect(_ => {

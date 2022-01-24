@@ -17,7 +17,7 @@ import RenameIcon from '~/assets/icons/rename.svg'
 import DeleteIcon from '~/assets/icons/delete.svg'
 import { context } from './context'
 
-const HomePage = _ => {
+const TimerPage = _ => {
   useKeepAwake()
   const { t } = useTranslation('home')
   const navigate = useNavigate()
@@ -33,7 +33,7 @@ const HomePage = _ => {
   }, [JSON.stringify(timers)])
 
   const doRenameTimer = _ => {
-    navigate(`/rename-timer/${selectedTimerId}`)
+    navigate(`/timer/rename-timer/${selectedTimerId}`)
     doCloseDialog()
   }
 
@@ -104,4 +104,4 @@ const HomePage = _ => {
   </context.Provider>
 }
 
-export default HomePage
+export default TimerPage

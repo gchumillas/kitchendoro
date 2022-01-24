@@ -1,7 +1,7 @@
 // TODO: make Android version
 import React from 'react'
 import { View, ActivityIndicator } from 'react-native'
-import { NativeRouter, Routes, Route } from 'react-router-native'
+import { NativeRouter, Routes, Route, Navigate } from 'react-router-native'
 import { registerRootComponent } from 'expo'
 import { StatusBar } from 'expo-status-bar'
 import { useFonts } from 'expo-font'
@@ -9,7 +9,7 @@ import * as Notifications from 'expo-notifications'
 import * as ScreenOrientation from 'expo-screen-orientation'
 import { RobotoMono_400Regular, RobotoMono_700Bold } from '@expo-google-fonts/roboto-mono'
 import { requestPushNotifications } from './src/libs/notifications'
-import HomePage from './src/pages/HomePage'
+import TimerPage from './src/pages/TimerPage'
 import RenameTimerDialog from './src/pages/RenameTimerDialog'
 import './src/i18n'
 
@@ -51,9 +51,10 @@ const App = _ => {
     ? <Loading />
     : <NativeRouter>
       <Routes>
-        <Route path="/" element={<HomePage />}>
-          <Route path="/rename-timer/:id" element={<RenameTimerDialog />} />
+        <Route path="/timer" element={<TimerPage />}>
+          <Route path="/timer/rename-timer/:id" element={<RenameTimerDialog />} />
         </Route>
+        <Route path="/" element={<Navigate to="/timer" />} />
       </Routes>
     </NativeRouter>
 }
