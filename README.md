@@ -1,4 +1,10 @@
-A multi-timer application.
+A multi-timer application. The essential chef tool.
+
+**Features:**
+
+1. Notifications with sounds.
+2. Prevent screen from locking.
+3. Multilanguage.
 
 ## Screenshots
 
