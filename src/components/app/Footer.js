@@ -7,7 +7,7 @@ import TimerIcon from '~/assets/icons/timer.svg'
 import ChronoIcon from '~/assets/icons/chrono.svg'
 
 const Footer = _ => {
-  return <View style={tw('flex flex-row justify-around items-center w-full py-4 px-6')}>
+  return <View style={tw('flex flex-row justify-around items-center')}>
     <Link to="/timer">
       <Icon component={TimerIcon} size={55} />
     </Link>

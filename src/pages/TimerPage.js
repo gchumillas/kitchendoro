@@ -93,7 +93,7 @@ const TimerPage = _ => {
               onSelect={_ => setSelectedTimerId(item.id)}
               style={tw('mb-5')} />}
         keyExtractor={item => item.id}
-        style={tw('w-full px-5 pt-5')} />
+        style={tw('w-full')} />
     </PageLayout>
     <ContextMenu visible={!!selectedTimerId} onRequestClose={doCloseDialog}>
       <ContextMenuItem icon={RenameIcon} label={t`rename`} onPress={doRenameTimer} />
