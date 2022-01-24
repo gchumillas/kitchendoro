@@ -6,11 +6,10 @@ import Footer from '~/src/components/app/Footer'
 import PageLayout from '~/src/layouts/PageLayout'
 
 const ChronoPage = _ => {
-  return <PageLayout>
+  return <PageLayout footer={<Footer />}>
     <View style={tw('flex-shrink flex-grow px-5 pt-5')}>
       <Text>chrono page</Text>
     </View>
-    <Footer />
   </PageLayout>
 }
 

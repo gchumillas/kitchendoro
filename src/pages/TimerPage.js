@@ -70,7 +70,7 @@ const TimerPage = _ => {
   }, [])
 
   return <context.Provider value={React.useMemo(_ => ({ reload }), [])}>
-    <PageLayout>
+    <PageLayout footer={<Footer />}>
       <FlatList
         keyboardShouldPersistTaps="handled"
         data={items}
@@ -94,7 +94,6 @@ const TimerPage = _ => {
               style={tw('mb-5')} />}
         keyExtractor={item => item.id}
         style={tw('w-full px-5 pt-5')} />
-      <Footer />
     </PageLayout>
     <ContextMenu visible={!!selectedTimerId} onRequestClose={doCloseDialog}>
       <ContextMenuItem icon={RenameIcon} label={t`rename`} onPress={doRenameTimer} />
