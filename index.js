@@ -1,4 +1,5 @@
 // TODO: make Android version
+// TODO: (ios) No native splash screen registered for given view controller. Call 'SplashScreen.show' for given view controller first.
 import React from 'react'
 import { View, ActivityIndicator } from 'react-native'
 import { NativeRouter, Routes, Route, Navigate } from 'react-router-native'
@@ -10,6 +11,7 @@ import * as ScreenOrientation from 'expo-screen-orientation'
 import { RobotoMono_400Regular, RobotoMono_700Bold } from '@expo-google-fonts/roboto-mono'
 import { requestPushNotifications } from './src/libs/notifications'
 import TimerPage from './src/pages/TimerPage'
+import ChronoPage from './src/pages/ChronoPage'
 import RenameTimerDialog from './src/pages/RenameTimerDialog'
 import './src/i18n'
 
@@ -29,8 +31,6 @@ const Loading = _ => {
   </View>
 }
 
-// TODO: prevent from sleeping
-// TODO: (ios) No native splash screen registered for given view controller. Call 'SplashScreen.show' for given view controller first.
 const App = _ => {
   const [fontsLoaded] = useFonts({ RobotoMono_400Regular, RobotoMono_700Bold })
 
@@ -54,6 +54,7 @@ const App = _ => {
         <Route path="/timer" element={<TimerPage />}>
           <Route path="/timer/rename-timer/:id" element={<RenameTimerDialog />} />
         </Route>
+        <Route path="/chrono" element={<ChronoPage />} />
         <Route path="/" element={<Navigate to="/timer" />} />
       </Routes>
     </NativeRouter>

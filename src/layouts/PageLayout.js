@@ -7,7 +7,7 @@ import { useStatusBarHeight } from '~/src/hooks/utils'
 const PageLayout = ({ children }) => {
   const height = useStatusBarHeight()
 
-  return <SafeAreaView style={{ ...tw('flex h-full bg-dark items-center justify-center'), paddingTop: height }}>
+  return <SafeAreaView style={{ ...tw('flex h-full bg-dark'), paddingTop: height }}>
     {children}
     <StatusBar style="light" />
   </SafeAreaView>
