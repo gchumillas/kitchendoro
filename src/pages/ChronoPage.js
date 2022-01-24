@@ -35,12 +35,11 @@ const ChronoPage = _ => {
   }
 
   React.useEffect(_ => {
-    setSeconds(0)
+    setSeconds(chrono ? Math.floor(((chrono.running ? Date.now() : chrono.endTo) - chrono.startFrom) / 1000) : 0)
 
     const interval = setInterval(_ => {
-      const seconds = chrono ? Math.floor((Date.now() - chrono.startFrom) / 1000) : 0
-      setSeconds(seconds)
-    }, 1000)
+      setSeconds(chrono ? Math.floor(((chrono.running ? Date.now() : chrono.endTo) - chrono.startFrom) / 1000) : 0)
+    }, 100)
 
     return _ => {
       clearInterval(interval)
