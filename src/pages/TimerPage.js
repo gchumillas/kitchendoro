@@ -38,8 +38,10 @@ const TimerPage = _ => {
   }
 
   const doDeleteTimer = async _ => {
-    setSelectedTimerId(null)
+    const { notificationId } = await readTimer(selectedTimerId)
+    await cancelNotification(notificationId)
     await deleteTimer(selectedTimerId)
+    setSelectedTimerId(null)
     reload()
   }
 
