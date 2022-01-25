@@ -17,7 +17,11 @@ const ChronoPage = _ => {
   const [chrono, setChrono] = React.useState({ startFrom: 0, endTo: 0, running: false })
   const [seconds, setSeconds] = React.useState(0)
   const time = React.useMemo(_ => parseSeconds(seconds), [seconds])
-  const reload = async _ => setChrono(await getChrono())
+
+  const reload = async _ => {
+    const chrono = await getChrono()
+    setChrono(_ => chrono)
+  }
 
   const doStartChrono = async _ => {
     await startChrono()
@@ -25,6 +29,7 @@ const ChronoPage = _ => {
   }
 
   const doStopChrono = async _ => {
+    setChrono(chrono => ({ ...chrono, endTo: Date.now(), running: false }))
     await stopChrono()
     reload()
   }
