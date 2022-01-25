@@ -1,7 +1,13 @@
 import { createStore } from 'redux'
 
 const initState = {
-  timers: []
+  timers: [],
+  chrono: {
+    startFrom: 0,
+    endTo: 0,
+    running: false,
+    started: false
+  }
 }
 
 const reducer = (state = initState, action) => {
@@ -9,6 +15,11 @@ const reducer = (state = initState, action) => {
     return {
       ...state,
       timers: action.payload
+    }
+  } else if (action.type == 'SET_CHRONO') {
+    return {
+      ...state,
+      chrono: action.payload
     }
   }
 
