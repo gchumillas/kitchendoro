@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { NativeModules, StatusBarIOS, Platform, StatusBar, LogBox } from 'react-native'
 import get from 'lodash/get'
 
@@ -26,3 +26,11 @@ export const useStatusBarHeight = () => {
 
   return height
 }
+
+export const useInterval = ({ ms, inmediate = true }, callback, deps = []) => React.useEffect(_ => {
+  inmediate && callback()
+  const interval = setInterval(callback, ms)
+  return _ => {
+    clearInterval(interval)
+  }
+}, deps)

@@ -1,21 +1,12 @@
 import React from 'react'
+import { useInterval } from './utils'
 
 export const useChrono = ({ running, startFrom, endTo }) => {
   const [seconds, setSeconds] = React.useState(0)
-  const elapsedTime = ({ running, startFrom, endTo }) => {
-    endTo = running ? Date.now() : endTo
-    return Math.floor((endTo - startFrom) / 1000)
-  }
 
-  React.useEffect(_ => {
-    setSeconds(elapsedTime({ running, startFrom, endTo }))
-    const interval = setInterval(_ => {
-      setSeconds(elapsedTime({ running, startFrom, endTo }))
-    }, 1000)
-
-    return _ => {
-      clearInterval(interval)
-    }
+  useInterval({ ms: 1000 }, _ => {
+    const now = running ? Date.now() : endTo
+    setSeconds(Math.floor((now - startFrom) / 1000))
   }, [running, startFrom, endTo])
 
   return seconds
