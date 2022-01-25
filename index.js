@@ -3,6 +3,7 @@
 import React from 'react'
 import { View, ActivityIndicator } from 'react-native'
 import { NativeRouter, Routes, Route, Navigate } from 'react-router-native'
+import { Provider } from 'react-redux'
 import { registerRootComponent } from 'expo'
 import { StatusBar } from 'expo-status-bar'
 import { useFonts } from 'expo-font'
@@ -14,6 +15,7 @@ import TimerPage from './src/pages/TimerPage'
 import ChronoPage from './src/pages/ChronoPage'
 import RenameTimerDialog from './src/pages/RenameTimerDialog'
 import './src/i18n'
+import store from './src/store'
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -35,6 +37,7 @@ const App = _ => {
   const [fontsLoaded] = useFonts({ RobotoMono_400Regular, RobotoMono_700Bold })
 
   React.useEffect(_ => {
+    console.log(store)
     ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT)
     requestPushNotifications()
 
@@ -49,15 +52,17 @@ const App = _ => {
 
   return !fontsLoaded
     ? <Loading />
-    : <NativeRouter>
-      <Routes>
-        <Route path="/timer" element={<TimerPage />}>
-          <Route path="/timer/rename-timer/:id" element={<RenameTimerDialog />} />
-        </Route>
-        <Route path="/chrono" element={<ChronoPage />} />
-        <Route path="/" element={<Navigate to="/timer" />} />
-      </Routes>
-    </NativeRouter>
+    : <Provider store={store}>
+      <NativeRouter>
+        <Routes>
+          <Route path="/timer" element={<TimerPage />}>
+            <Route path="/timer/rename-timer/:id" element={<RenameTimerDialog />} />
+          </Route>
+          <Route path="/chrono" element={<ChronoPage />} />
+          <Route path="/" element={<Navigate to="/timer" />} />
+        </Routes>
+      </NativeRouter>
+    </Provider>
 }
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
