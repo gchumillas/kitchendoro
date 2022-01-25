@@ -20,23 +20,3 @@ export const useCountdown = ({ running, startFrom, seconds }) => {
 
   return countdown
 }
-
-export const useChrono = ({ running, startFrom }) => {
-  const [seconds, setSeconds] = React.useState(0)
-
-  React.useEffect(_ => {
-    setSeconds(0)
-
-    const interval = setInterval(_ => {
-      if (running) {
-        setSeconds(Math.floor((Date.now() - startFrom) / 1000))
-      }
-    }, 1000)
-
-    return _ => {
-      clearInterval(interval)
-    }
-  }, [running, startFrom])
-
-  return seconds
-}

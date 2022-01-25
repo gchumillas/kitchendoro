@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import { tw } from '~/src/libs/tailwind'
 import { getChrono, startChrono, stopChrono, resetChrono } from '~/src/providers/chrono'
 import { parseSeconds } from '~/src/libs/time'
+import { useChrono } from '~/src/hooks/chrono'
 import Text from '~/src/components/display/Text'
 import IconButton from '~/src/components/inputs/IconButton'
 import Footer from '~/src/components/app/Footer'
@@ -15,7 +16,7 @@ const iconSize = 55
 
 const ChronoPage = _ => {
   const [chrono, setChrono] = React.useState({ startFrom: 0, endTo: 0, running: false })
-  const [seconds, setSeconds] = React.useState(0)
+  const seconds = useChrono(chrono)
   const time = React.useMemo(_ => parseSeconds(seconds), [seconds])
 
   const reload = async _ => {
@@ -38,19 +39,6 @@ const ChronoPage = _ => {
     await resetChrono()
     reload()
   }
-
-  React.useEffect(_ => {
-    const endTo = chrono => Math.floor(((chrono.running ? Date.now() : chrono.endTo) - chrono.startFrom) / 1000)
-
-    setSeconds(endTo(chrono))
-    const interval = setInterval(_ => {
-      setSeconds(endTo(chrono))
-    }, 1000)
-
-    return _ => {
-      clearInterval(interval)
-    }
-  }, [JSON.stringify(chrono)])
 
   React.useEffect(_ => {
     reload()
