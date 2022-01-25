@@ -4,7 +4,7 @@ import cn from 'react-native-classnames'
 import Text from '~/src/components/display/Text'
 import { tw } from '~/src/libs/tailwind'
 
-const Component = ({ title = '', dense = false, autoFocus = false, value, onChange, ...inputProps }) => {
+const TextField = ({ title = '', dense = false, autoFocus = false, value, onChange, ...inputProps }) => {
   const inputRef = React.useRef(null)
   const [text, setText] = React.useState('')
 
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
   input: tw('border-b-2 text-dark text-base h-10')
 })
 
-export default Component
+export default TextField

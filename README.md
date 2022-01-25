@@ -4,7 +4,8 @@ A multi-timer application. The essential chef tool.
 
 1. Notifications with sounds.
 2. Prevent screen from locking.
-3. Multilanguage.
+3. Still working in background.
+4. Multilanguage.
 
 ## Screenshots
 
@@ -24,5 +25,5 @@ yarn ios
 
 ```bash
 # generates tailwind.json based on tailwind.config.js
-npx create-tailwind-rn && cp styles.json tailwind.json && rm styles.json
+yarn tw:build
 ```

@@ -4,7 +4,7 @@ import cn from 'react-native-classnames'
 import Text from '~/src/components/display/Text'
 import { tw } from '~/src/libs/tailwind'
 
-const Component = ({ title, primary = false, disabled = false, ...props }) => {
+const Button = ({ title, primary = false, disabled = false, ...props }) => {
   return <Pressable style={cn(styles, 'wrapper', { primary, primaryDisabled: primary && disabled })} disabled={disabled} {...props}>
     <Text style={cn(styles, 'text', { primaryText: primary, disabledText: disabled })}>{title}</Text>
   </Pressable>
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
   disabledText: tw('text-gray-300')
 })
 
-export default Component
+export default Button

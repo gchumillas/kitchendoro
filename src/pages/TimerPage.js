@@ -8,15 +8,16 @@ import { getColor, tw } from '~/src/libs/tailwind'
 import { time2Seconds } from '~/src/libs/utils'
 import { pushNotification, cancelNotification } from '~/src/libs/notifications'
 import PageLayout from '~/src/layouts/PageLayout'
-import ContextMenu, { ContextMenuItem } from '~/src/components/ContextMenu'
-import Timer from '~/src/components/display/Timer'
-import TimerInput from '~/src/components/inputs/TimerInput'
+import ContextMenu, { ContextMenuItem } from '~/src/components/app/ContextMenu'
+import TimerInput from '~/src/components/app/TimerInput'
+import { context } from '~/src/components/app/context'
+import Timer from '~/src/components/app/Timer'
+import Footer from '~/src/components/app/Footer'
 import { getTimers, createTimer, deleteTimer, updateTimer, readTimer } from '~/src/providers/timers'
 import RenameIcon from '~/assets/icons/rename.svg'
 import DeleteIcon from '~/assets/icons/delete.svg'
-import { context } from './context'
 
-const HomePage = _ => {
+const TimerPage = _ => {
   useKeepAwake()
   const { t } = useTranslation('home')
   const navigate = useNavigate()
@@ -32,7 +33,7 @@ const HomePage = _ => {
   }, [JSON.stringify(timers)])
 
   const doRenameTimer = _ => {
-    navigate(`/rename-timer/${selectedTimerId}`)
+    navigate(`/timer/rename-timer/${selectedTimerId}`)
     doCloseDialog()
   }
 
@@ -69,7 +70,7 @@ const HomePage = _ => {
   }, [])
 
   return <context.Provider value={React.useMemo(_ => ({ reload }), [])}>
-    <PageLayout>
+    <PageLayout footer={<Footer />}>
       <FlatList
         keyboardShouldPersistTaps="handled"
         data={items}
@@ -92,14 +93,14 @@ const HomePage = _ => {
               onSelect={_ => setSelectedTimerId(item.id)}
               style={tw('mb-5')} />}
         keyExtractor={item => item.id}
-        style={tw('w-full px-5 pt-5')} />
-      <ContextMenu visible={!!selectedTimerId} onRequestClose={doCloseDialog}>
-        <ContextMenuItem icon={RenameIcon} label={t`rename`} onPress={doRenameTimer} />
-        <ContextMenuItem icon={DeleteIcon} label={t`delete`} onPress={doDeleteTimer} color={getColor('red-800')} />
-      </ContextMenu>
+        style={tw('w-full')} />
     </PageLayout>
+    <ContextMenu visible={!!selectedTimerId} onRequestClose={doCloseDialog}>
+      <ContextMenuItem icon={RenameIcon} label={t`rename`} onPress={doRenameTimer} />
+      <ContextMenuItem icon={DeleteIcon} label={t`delete`} onPress={doDeleteTimer} color={getColor('red-800')} />
+    </ContextMenu>
     <Outlet />
   </context.Provider>
 }
 
-export default HomePage
+export default TimerPage

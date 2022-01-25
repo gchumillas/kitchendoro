@@ -9,8 +9,7 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "lint": "eslint ./src",
-    "build:tailwind": "tailwindcss --input input.css --output tailwind.css --no-autoprefixer && tailwind-rn",
-    "dev:tailwind": "concurrently \"tailwindcss --input input.css --output tailwind.css --no-autoprefixer --watch\" \"tailwind-rn --watch\""
+    "tw:build": "npx create-tailwind-rn && cp styles.json tailwind.json && rm styles.json"
   },
   "dependencies": {
     "@expo-google-fonts/roboto-mono": "^0.2.0",
