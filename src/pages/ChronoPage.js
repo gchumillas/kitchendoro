@@ -1,6 +1,7 @@
 import React from 'react'
-import { View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { tw } from '~/src/libs/tailwind'
+import cn from 'react-native-classnames'
 import { getChrono, startChrono, stopChrono, resetChrono } from '~/src/providers/chrono'
 import { parseSeconds } from '~/src/libs/time'
 import { useChrono } from '~/src/hooks/chrono'
@@ -47,8 +48,8 @@ const ChronoPage = _ => {
 
   return <PageLayout footer={<Footer />}>
     <View style={tw('flex h-full items-center justify-center')}>
-      <View style={tw('')}>
-        <Text style={{ ...tw('mb-7 text-center text-6xl'), fontFamily: 'RobotoMono_400Regular' }}>
+      <View>
+        <Text style={cn(styles, 'text', { running: chrono.running })}>
           {time}
         </Text>
         <View style={tw('flex flex-row justify-evenly items-center')}>
@@ -61,5 +62,13 @@ const ChronoPage = _ => {
     </View>
   </PageLayout>
 }
+
+const styles = StyleSheet.create({
+  text: {
+    ...tw('mb-7 text-center text-6xl'),
+    fontFamily: 'RobotoMono_400Regular'
+  },
+  running: tw('text-green-0')
+})
 
 export default ChronoPage
