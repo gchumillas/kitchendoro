@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { tw } from '~/src/libs/tailwind'
 import cn from 'react-native-classnames'
+import { useKeepAwake } from 'expo-keep-awake'
 import { getChrono, startChrono, stopChrono, resetChrono } from '~/src/providers/chrono'
 import { useInterval, parseSeconds } from '~/src/libs/utils'
 import Text from '~/src/components/display/Text'
@@ -15,6 +16,7 @@ import StopIcon from '~/assets/icons/stop.svg'
 const iconSize = 55
 
 const ChronoPage = _ => {
+  useKeepAwake()
   const [chrono, setChrono] = React.useState({ startFrom: 0, endTo: 0, running: false, started: false })
   const seconds = useChrono(chrono)
   const time = React.useMemo(_ => parseSeconds(seconds), [seconds])
