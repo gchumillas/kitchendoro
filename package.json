@@ -33,7 +33,9 @@
     "react-native-svg": "12.1.1",
     "react-native-uuid": "^2.0.1",
     "react-native-web": "0.17.1",
+    "react-redux": "^7.2.6",
     "react-router-native": "^6.2.1",
+    "redux": "^4.1.2",
     "tailwind-rn": "^3.0.1"
   },
   "devDependencies": {
