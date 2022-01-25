@@ -2,7 +2,7 @@ import React from 'react'
 import { SafeAreaView, View } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import { tw } from '~/src/libs/tailwind'
-import { useStatusBarHeight } from '~/src/hooks/utils'
+import { useStatusBarHeight } from '~/src/libs/status-bar'
 
 const PageLayout = ({ footer, children }) => {
   const height = useStatusBarHeight()

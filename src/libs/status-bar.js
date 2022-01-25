@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { NativeModules, StatusBarIOS, Platform, StatusBar, LogBox } from 'react-native'
 import get from 'lodash/get'
 
@@ -6,9 +6,9 @@ LogBox.ignoreLogs(['StatusBarIOS has been merged with StatusBar and will be remo
 export const useStatusBarHeight = () => {
   const { StatusBarManager } = NativeModules
   // Initialize w/ currentHeight b/c StatusBar.currentHeight works properly on android on Android
-  const [height, setHeight] = useState(StatusBar.currentHeight || 0)
+  const [height, setHeight] = React.useState(StatusBar.currentHeight || 0)
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (Platform.OS !== 'ios') return
 
     StatusBarManager.getHeight(({ height }) => {
@@ -26,11 +26,3 @@ export const useStatusBarHeight = () => {
 
   return height
 }
-
-export const useInterval = ({ ms, inmediate = true }, callback, deps = []) => React.useEffect(_ => {
-  inmediate && callback()
-  const interval = setInterval(callback, ms)
-  return _ => {
-    clearInterval(interval)
-  }
-}, deps)
