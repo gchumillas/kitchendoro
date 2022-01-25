@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native'
 import { tw } from '~/src/libs/tailwind'
 import cn from 'react-native-classnames'
 import { useKeepAwake } from 'expo-keep-awake'
+import { useChrono } from '~/src/store/chrono'
 import { getChrono, startChrono, stopChrono, resetChrono } from '~/src/providers/chrono'
 import { useInterval, parseSeconds } from '~/src/libs/utils'
 import Text from '~/src/components/display/Text'
@@ -17,14 +18,10 @@ const iconSize = 55
 
 const ChronoPage = _ => {
   useKeepAwake()
-  const [chrono, setChrono] = React.useState({ startFrom: 0, endTo: 0, running: false, started: false })
-  const seconds = useChrono(chrono)
+  const [chrono, setChrono] = useChrono()
+  const seconds = useSeconds(chrono)
   const time = React.useMemo(_ => parseSeconds(seconds), [seconds])
-
-  const reload = async _ => {
-    const chrono = await getChrono()
-    setChrono(_ => chrono)
-  }
+  const reload = async _ => setChrono(await getChrono())
 
   const doStartChrono = async _ => {
     await startChrono()
@@ -32,13 +29,13 @@ const ChronoPage = _ => {
   }
 
   const doStopChrono = async _ => {
-    setChrono(chrono => ({ ...chrono, endTo: Date.now(), running: false }))
+    setChrono(({ ...chrono, endTo: Date.now(), running: false }))
     await stopChrono()
     reload()
   }
 
   const doResetChrono = async _ => {
-    setChrono(chrono => ({ ...chrono, started: false }))
+    setChrono(({ ...chrono, started: false }))
     await resetChrono()
     reload()
   }
@@ -72,7 +69,7 @@ const styles = StyleSheet.create({
   running: tw('text-green-0')
 })
 
-const useChrono = ({ running, startFrom, endTo }) => {
+const useSeconds = ({ running, startFrom, endTo }) => {
   const [seconds, setSeconds] = React.useState(0)
 
   useInterval({ ms: 1000 }, _ => {
