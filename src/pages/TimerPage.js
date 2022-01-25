@@ -4,6 +4,7 @@ import { FlatList } from 'react-native'
 import { Outlet, useNavigate } from 'react-router-native'
 import uuid from 'react-native-uuid'
 import { useKeepAwake } from 'expo-keep-awake'
+import { useTimers } from '~/src/store/timers'
 import { getColor, tw } from '~/src/libs/tailwind'
 import { time2Seconds } from '~/src/libs/utils'
 import { pushNotification, cancelNotification } from '~/src/libs/notifications'
@@ -22,7 +23,7 @@ const TimerPage = _ => {
   const { t } = useTranslation('home')
   const navigate = useNavigate()
   const [time, setTime] = React.useState({ hh: '', mm: '', ss: '' })
-  const [timers, setTimers] = React.useState([])
+  const [timers, setTimers] = useTimers()
   const [selectedTimerId, setSelectedTimerId] = React.useState('')
   const reload = async _ => setTimers(await getTimers())
   const doCloseDialog = _ => setSelectedTimerId('')

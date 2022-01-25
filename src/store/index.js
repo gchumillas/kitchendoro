@@ -8,7 +8,7 @@ const reducer = (state = initState, action) => {
   if (action.type == 'SET_TIMERS') {
     return {
       ...state,
-      timers: action.timers
+      timers: action.payload
     }
   }
 
