@@ -15,7 +15,7 @@ import StopIcon from '~/assets/icons/stop.svg'
 const iconSize = 55
 
 const ChronoPage = _ => {
-  const [chrono, setChrono] = React.useState({ startFrom: 0, endTo: 0, running: false })
+  const [chrono, setChrono] = React.useState({ startFrom: 0, endTo: 0, running: false, started: false })
   const seconds = useChrono(chrono)
   const time = React.useMemo(_ => parseSeconds(seconds), [seconds])
 
@@ -36,6 +36,7 @@ const ChronoPage = _ => {
   }
 
   const doResetChrono = async _ => {
+    setChrono(chrono => ({ ...chrono, started: false }))
     await resetChrono()
     reload()
   }
@@ -51,7 +52,7 @@ const ChronoPage = _ => {
           {time}
         </Text>
         <View style={tw('flex flex-row justify-evenly items-center')}>
-          <IconButton icon={ResetIcon} size={iconSize} onPress={doResetChrono} />
+          <IconButton disabled={!chrono.started} icon={ResetIcon} size={iconSize} onPress={doResetChrono} />
           {chrono?.running
             ? <IconButton icon={StopIcon} size={iconSize} onPress={doStopChrono} />
             : <IconButton icon={PlayIcon} size={iconSize} onPress={doStartChrono} />}

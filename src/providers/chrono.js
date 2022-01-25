@@ -4,7 +4,8 @@ import { fix } from '@gchumillas/schema-fixer'
 const fixChrono = chrono => fix(chrono, {
   startFrom: 'number',
   endTo: 'number',
-  running: 'boolean'
+  running: 'boolean',
+  started: 'boolean'
 })
 
 const saveChrono = async chrono => {
@@ -12,7 +13,7 @@ const saveChrono = async chrono => {
 }
 
 /**
- * @returns {Promise<{ startFrom: number, endTo: number, running: boolean }>}
+ * @returns {Promise<{ startFrom: number, endTo: number, running: boolean, started: boolean }>}
  */
 export const getChrono = async _ => {
   try {
@@ -21,14 +22,15 @@ export const getChrono = async _ => {
     return {
       startFrom: 0,
       endTo: 0,
-      running: false
+      running: false,
+      started: false
     }
   }
 }
 
 export const startChrono = async _ => {
   const { startFrom, endTo } = await getChrono()
-  await saveChrono({ startFrom: Date.now() - endTo + startFrom, running: true })
+  await saveChrono({ startFrom: Date.now() - endTo + startFrom, running: true, started: true })
 }
 
 export const stopChrono = async _ => {
