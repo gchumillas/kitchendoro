@@ -4,7 +4,7 @@ import { tw } from '~/src/libs/tailwind'
 import cn from 'react-native-classnames'
 import { getChrono, startChrono, stopChrono, resetChrono } from '~/src/providers/chrono'
 import { parseSeconds } from '~/src/libs/time'
-import { useChrono } from '~/src/hooks/chrono'
+import { useInterval } from '~/src/hooks/utils'
 import Text from '~/src/components/display/Text'
 import IconButton from '~/src/components/inputs/IconButton'
 import Footer from '~/src/components/app/Footer'
@@ -70,5 +70,16 @@ const styles = StyleSheet.create({
   },
   running: tw('text-green-0')
 })
+
+const useChrono = ({ running, startFrom, endTo }) => {
+  const [seconds, setSeconds] = React.useState(0)
+
+  useInterval({ ms: 1000 }, _ => {
+    const now = running ? Date.now() : endTo
+    setSeconds(Math.floor((now - startFrom) / 1000))
+  }, [running, startFrom, endTo])
+
+  return seconds
+}
 
 export default ChronoPage

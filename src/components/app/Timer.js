@@ -6,7 +6,7 @@ import { parseSeconds } from '~/src/libs/time'
 import MenuIcon from '~/assets/icons/menu.svg'
 import PlayIcon from '~/assets/icons/play.svg'
 import StopIcon from '~/assets/icons/stop.svg'
-import { useCountdown } from '~/src/hooks/timer'
+import { useInterval } from '~/src/hooks/utils'
 import IconButton from '~/src/components/inputs/IconButton'
 import ProgressBar from '~/src/components/display/ProgressBar'
 import Text from '~/src/components/display/Text'
@@ -50,5 +50,15 @@ const styles = StyleSheet.create({
   inTime: tw('border-green-0 border-opacity-50'),
   overTime: tw('border-red-0 border-opacity-50')
 })
+
+export const useCountdown = ({ running, startFrom, seconds }) => {
+  const [countdown, setCountdown] = React.useState(0)
+
+  useInterval({ ms: 1000 }, _ => {
+    setCountdown(running ? seconds - Math.floor((Date.now() - startFrom) / 1000) : seconds)
+  }, [running, seconds, startFrom])
+
+  return countdown
+}
 
 export default Timer
