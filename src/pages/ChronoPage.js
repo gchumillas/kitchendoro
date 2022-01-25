@@ -14,7 +14,7 @@ import StopIcon from '~/assets/icons/stop.svg'
 const iconSize = 55
 
 const ChronoPage = _ => {
-  const [chrono, setChrono] = React.useState(null) // null | { startFrom: number, running: boolean }
+  const [chrono, setChrono] = React.useState({ startFrom: 0, endTo: 0, running: false })
   const [seconds, setSeconds] = React.useState(0)
   const time = React.useMemo(_ => parseSeconds(seconds), [seconds])
   const reload = async _ => setChrono(await getChrono())
@@ -35,7 +35,7 @@ const ChronoPage = _ => {
   }
 
   React.useEffect(_ => {
-    const endTo = chrono => chrono ? Math.floor(((chrono.running ? Date.now() : chrono.endTo) - chrono.startFrom) / 1000) : 0
+    const endTo = chrono => Math.floor(((chrono.running ? Date.now() : chrono.endTo) - chrono.startFrom) / 1000)
 
     setSeconds(endTo(chrono))
     const interval = setInterval(_ => {

@@ -18,12 +18,16 @@ export const getChrono = async _ => {
   try {
     return fixChrono(JSON.parse(await ss.getItemAsync('chrono')))
   } catch (err) {
-    return null
+    return {
+      startFrom: 0,
+      endTo: 0,
+      running: false
+    }
   }
 }
 
 export const startChrono = async _ => {
-  const { startFrom, endTo } = await getChrono() ?? { startFrom: 0, endTo: 0 }
+  const { startFrom, endTo } = await getChrono()
   await saveChrono({ startFrom: Date.now() - endTo + startFrom, running: true })
 }
 
