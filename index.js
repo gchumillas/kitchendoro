@@ -38,12 +38,12 @@ const App = _ => {
     ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT)
     requestPushNotifications()
 
-    const responseListener = Notifications.addNotificationResponseReceivedListener(res => {
+    const listener = Notifications.addNotificationResponseReceivedListener(res => {
       Notifications.dismissAllNotificationsAsync()
     })
 
     return _ => {
-      responseListener.remove()
+      listener.remove()
     }
   }, [])
 
