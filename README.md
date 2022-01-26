@@ -1,6 +1,6 @@
 A multi-timer application. The essential chef tool.
 
-View in Apple Store:  
+View in Apple Store:<br>
 https://apps.apple.com/es/app/kitchendoro/id1607064139
 
 **Features:**
