@@ -5,12 +5,13 @@ import { tw } from '~/src/libs/tailwind'
 import Icon from '~/src/components/display/Icon'
 
 const IconButton = ({ icon, disabled = false, size = 35, onPress = undefined, ...iconProps }) => {
-  return <Pressable onPress={onPress} disabled={disabled} style={cn(styles, { disabled })}>
+  return <Pressable onPress={onPress} disabled={disabled} style={({ pressed }) => cn(styles, { pressed, disabled })}>
     <Icon {...iconProps} component={icon} size={size} />
   </Pressable>
 }
 
 const styles = StyleSheet.create({
+  pressed: tw('opacity-60'),
   disabled: tw('opacity-30')
 })
 
