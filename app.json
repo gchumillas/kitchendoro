@@ -14,7 +14,10 @@
           "color": "#ffffff"
         }
       ]
-    ]
+    ],
+    "ios": {
+      "bundleIdentifier": "com.gchumillas.MultiTimer"
+    }
   },
   "name": "Multi Timer"
 }
