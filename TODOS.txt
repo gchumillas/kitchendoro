@@ -1,0 +1,2 @@
+1. TODO: disable notifications when the app is in foreground
+2. TODO: dismiss all notifications when the app is in foreground

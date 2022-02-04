@@ -16,6 +16,7 @@ import StopIcon from '~/assets/icons/stop.svg'
 
 const iconSize = 55
 
+// TODO: Sometimes the chrono "jumps" two seconds.
 const ChronoPage = _ => {
   useKeepAwake()
   const [chrono, setChrono] = useChrono()
@@ -52,6 +53,7 @@ const ChronoPage = _ => {
         </Text>
         <View style={tw('flex flex-row justify-evenly items-center')}>
           <IconButton disabled={!chrono.started} icon={ResetIcon} size={iconSize} onPress={doResetChrono} />
+          {/* TODO: replace the stop icon by pause icon */}
           {chrono?.running
             ? <IconButton icon={StopIcon} size={iconSize} onPress={doStopChrono} />
             : <IconButton icon={PlayIcon} size={iconSize} onPress={doStartChrono} />}
