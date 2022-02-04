@@ -1,4 +1,3 @@
 1. TODO: disable notifications when the app is in foreground
 2. TODO: dismiss all notifications when the app is opened
 3. TODO: do not show notifications when the app is opened
-4. TODO: rename MultiTimer by Kitchendoro
