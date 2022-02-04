@@ -18,7 +18,7 @@ import './src/i18n'
 import store from './src/store'
 
 Notifications.setNotificationHandler({
-  handleNotification: async () => ({
+  handleNotification: _ => ({
     shouldShowAlert: true,
     shouldPlaySound: true,
     shouldSetBadge: false
@@ -41,7 +41,7 @@ const App = _ => {
     ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT)
     requestPushNotifications()
 
-    const listener = Notifications.addNotificationResponseReceivedListener(res => {
+    const listener = Notifications.addNotificationResponseReceivedListener(_ => {
       Notifications.dismissAllNotificationsAsync()
     })
 
