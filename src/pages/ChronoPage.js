@@ -12,7 +12,7 @@ import Footer from '~/src/components/app/Footer'
 import PageLayout from '~/src/layouts/PageLayout'
 import ResetIcon from '~/assets/icons/reset.svg'
 import PlayIcon from '~/assets/icons/play.svg'
-import StopIcon from '~/assets/icons/stop.svg'
+import PauseIcon from '~/assets/icons/pause.svg'
 
 const iconSize = 55
 
@@ -55,7 +55,7 @@ const ChronoPage = _ => {
           <IconButton disabled={!chrono.started} icon={ResetIcon} size={iconSize} onPress={doResetChrono} />
           {/* TODO: replace the stop icon by pause icon */}
           {chrono?.running
-            ? <IconButton icon={StopIcon} size={iconSize} onPress={doStopChrono} />
+            ? <IconButton icon={PauseIcon} size={iconSize} onPress={doStopChrono} />
             : <IconButton icon={PlayIcon} size={iconSize} onPress={doStartChrono} />}
         </View>
       </View>
