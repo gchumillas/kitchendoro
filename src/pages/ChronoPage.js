@@ -52,7 +52,6 @@ const ChronoPage = _ => {
         </Text>
         <View style={tw('flex flex-row justify-evenly items-center')}>
           <IconButton disabled={!chrono.started} icon={ResetIcon} size={iconSize} onPress={doResetChrono} />
-          {/* TODO: replace the stop icon by pause icon */}
           {chrono?.running
             ? <IconButton icon={PauseIcon} size={iconSize} onPress={doStopChrono} />
             : <IconButton icon={PlayIcon} size={iconSize} onPress={doStartChrono} />}
