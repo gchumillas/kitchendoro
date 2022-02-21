@@ -26,8 +26,8 @@ Notifications.setNotificationHandler({
 
 const Loading = _ => {
   // we can't use tailwind features since it's not yet ready
-  return <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <ActivityIndicator size="large" />
+  return <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
+    <ActivityIndicator size="large" color="white" />
     <StatusBar style="auto" />
   </View>
 }
