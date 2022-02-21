@@ -1,11 +1,11 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import { tw } from '~/src/libs/tailwind'
 import cn from 'react-native-classnames'
 import { useKeepAwake } from 'expo-keep-awake'
 import { useChrono } from '~/src/store/chrono'
 import { getChrono, startChrono, stopChrono, resetChrono } from '~/src/providers/chrono'
 import { useInterval, parseSeconds } from '~/src/libs/utils'
+import { tw, getColor } from '~/src/libs/tailwind'
 import Text from '~/src/components/display/Text'
 import IconButton from '~/src/components/inputs/IconButton'
 import Footer from '~/src/components/app/Footer'
@@ -22,6 +22,7 @@ const ChronoPage = _ => {
   const seconds = useSeconds(chrono)
   const time = React.useMemo(_ => parseSeconds(seconds), [seconds])
   const reload = async _ => setChrono(await getChrono())
+  const color = React.useMemo(_ => chrono.running ? getColor('green-0') : getColor('light'), [chrono.running])
 
   const doStartChrono = async _ => {
     await startChrono()
@@ -51,10 +52,10 @@ const ChronoPage = _ => {
           {time}
         </Text>
         <View style={tw('flex flex-row justify-evenly items-center')}>
-          <IconButton disabled={!chrono.started} icon={ResetIcon} size={iconSize} onPress={doResetChrono} />
+          <IconButton disabled={!chrono.started} icon={ResetIcon} size={iconSize} onPress={doResetChrono} color={color} />
           {chrono?.running
-            ? <IconButton icon={PauseIcon} size={iconSize} onPress={doStopChrono} />
-            : <IconButton icon={PlayIcon} size={iconSize} onPress={doStartChrono} />}
+            ? <IconButton icon={PauseIcon} size={iconSize} onPress={doStopChrono} color={color} />
+            : <IconButton icon={PlayIcon} size={iconSize} onPress={doStartChrono} color={color} />}
         </View>
       </View>
     </View>
