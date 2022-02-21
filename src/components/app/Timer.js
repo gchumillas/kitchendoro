@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
 export const useCountdown = ({ running, startFrom, seconds }) => {
   const [countdown, setCountdown] = React.useState(0)
 
-  useInterval({ ms: 1000 }, _ => {
+  useInterval({ ms: 333 }, _ => {
     setCountdown(running ? seconds - Math.floor((Date.now() - startFrom) / 1000) : seconds)
   }, [running, seconds, startFrom])
 
