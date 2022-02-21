@@ -16,7 +16,6 @@ import PauseIcon from '~/assets/icons/pause.svg'
 
 const iconSize = 55
 
-// TODO: Sometimes the chrono "jumps" two seconds.
 const ChronoPage = _ => {
   useKeepAwake()
   const [chrono, setChrono] = useChrono()
@@ -74,7 +73,7 @@ const styles = StyleSheet.create({
 const useSeconds = ({ running, startFrom, endTo }) => {
   const [seconds, setSeconds] = React.useState(0)
 
-  useInterval({ ms: 1000 }, _ => {
+  useInterval({ ms: 500 }, _ => {
     const now = running ? Date.now() : endTo
     setSeconds(Math.floor((now - startFrom) / 1000))
   }, [running, startFrom, endTo])
