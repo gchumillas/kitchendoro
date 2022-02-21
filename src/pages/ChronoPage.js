@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
 const useSeconds = ({ running, startFrom, endTo }) => {
   const [seconds, setSeconds] = React.useState(0)
 
-  useInterval({ ms: 500 }, _ => {
+  useInterval({ ms: 333 }, _ => {
     const now = running ? Date.now() : endTo
     setSeconds(Math.floor((now - startFrom) / 1000))
   }, [running, startFrom, endTo])
