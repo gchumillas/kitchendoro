@@ -1,5 +1,4 @@
 // TODO: make Android version
-// TODO: (ios) No native splash screen registered for given view controller. Call 'SplashScreen.show' for given view controller first.
 import React from 'react'
 import { View, ActivityIndicator } from 'react-native'
 import { NativeRouter, Routes, Route, Navigate } from 'react-router-native'
