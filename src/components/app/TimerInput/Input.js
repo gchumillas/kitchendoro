@@ -20,7 +20,7 @@ const Input = ({ value, onChange }) => {
       keyboardType="number-pad"
       value={value}
       onChangeText={doChange}
-      style={{ ...tw('absolute top-0 left-0 w-full text-light text-4xl mt-1'), fontFamily: 'RobotoMono_400Regular' }} />
+      style={{ ...tw('absolute top-0 left-0 w-full h-full text-light text-4xl mt-1'), fontFamily: 'RobotoMono_400Regular' }} />
   </View>
 }
 
