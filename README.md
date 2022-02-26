@@ -1,4 +1,4 @@
-A multi-timer application. The essential chef tool.
+A multi-timer and chrono application. The essential chef tool.
 
 View in [Apple Store](https://apps.apple.com/es/app/kitchendoro/id1607064139) or [Google Play](https://play.google.com/store/apps/details?id=com.multitimer).
 
