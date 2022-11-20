@@ -52,7 +52,7 @@ index.js     -- Entry point
 ```
 
 - [1] Some components can be reused in other applications, such as text fields, radio buttons, etc. And others don't. The `src/components/app` folder contains the components that are "app specific".
-- [2] A "page" is a special type of component used to present "pages". These components are registered in the routing system (see [App.js](/src/App.js)).
+- [2] A "page" is a special type of component used to present "pages". These components are registered in the routing system (see [index.js](/index.js)).
 - [3] A "provider" is any function that sends or gets information from an asynchronous resource, such as the System Cache or an external API.
 
 ## Relevant libraries
