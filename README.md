@@ -11,8 +11,7 @@ A multi-timer and chrono application. The essential chef tool.
 
 ## Screenshots
 
-<img src="https://user-images.githubusercontent.com/5312427/155002280-5dd4e52d-de7e-4a55-923e-2606a2aa71b5.png" width="250" alt="Timers page">
-<img src="https://user-images.githubusercontent.com/5312427/155001752-7d191991-a2e2-4996-9c0f-316ad0a6110b.png" width="250" alt="Chrono page">
+<img src="https://user-images.githubusercontent.com/5312427/155002280-5dd4e52d-de7e-4a55-923e-2606a2aa71b5.png" width="250" alt="Timers page"> <img src="https://user-images.githubusercontent.com/5312427/155001752-7d191991-a2e2-4996-9c0f-316ad0a6110b.png" width="250" alt="Chrono page">
 
 ## Installation
 
